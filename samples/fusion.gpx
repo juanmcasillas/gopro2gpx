@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wptx1="http://www.garmin.com/xmlschemas/WaypointExtension/v1" xmlns:gpxtrx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v2" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:trp="http://www.garmin.com/xmlschemas/TripExtensions/v1" xmlns:adv="http://www.garmin.com/xmlschemas/AdventuresExtensions/v1" xmlns:prs="http://www.garmin.com/xmlschemas/PressureExtension/v1" xmlns:tmd="http://www.garmin.com/xmlschemas/TripMetaDataExtensions/v1" xmlns:vptm="http://www.garmin.com/xmlschemas/ViaPointTransportationModeExtensions/v1" xmlns:ctx="http://www.garmin.com/xmlschemas/CreationTimeExtension/v1" xmlns:gpxacc="http://www.garmin.com/xmlschemas/AccelerationExtension/v1" xmlns:gpxpx="http://www.garmin.com/xmlschemas/PowerExtension/v1" xmlns:vidx1="http://www.garmin.com/xmlschemas/VideoExtension/v1" creator="Garmin Desktop App" version="1.1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/WaypointExtension/v1 http://www8.garmin.com/xmlschemas/WaypointExtensionv1.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v2 http://www.garmin.com/xmlschemas/TrackPointExtensionv2.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www8.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/ActivityExtension/v1 http://www8.garmin.com/xmlschemas/ActivityExtensionv1.xsd http://www.garmin.com/xmlschemas/AdventuresExtensions/v1 http://www8.garmin.com/xmlschemas/AdventuresExtensionv1.xsd http://www.garmin.com/xmlschemas/PressureExtension/v1 http://www.garmin.com/xmlschemas/PressureExtensionv1.xsd http://www.garmin.com/xmlschemas/TripExtensions/v1 http://www.garmin.com/xmlschemas/TripExtensionsv1.xsd http://www.garmin.com/xmlschemas/TripMetaDataExtensions/v1 http://www.garmin.com/xmlschemas/TripMetaDataExtensionsv1.xsd http://www.garmin.com/xmlschemas/ViaPointTransportationModeExtensions/v1 http://www.garmin.com/xmlschemas/ViaPointTransportationModeExtensionsv1.xsd http://www.garmin.com/xmlschemas/CreationTimeExtension/v1 http://www.garmin.com/xmlschemas/CreationTimeExtensionsv1.xsd http://www.garmin.com/xmlschemas/AccelerationExtension/v1 http://www.garmin.com/xmlschemas/AccelerationExtensionv1.xsd http://www.garmin.com/xmlschemas/PowerExtension/v1 http://www.garmin.com/xmlschemas/PowerExtensionv1.xsd http://www.garmin.com/xmlschemas/VideoExtension/v1 http://www.garmin.com/xmlschemas/VideoExtensionv1.xsd">
+<metadata>
+  <time>2018-03-23T17:25:37Z</time>
+</metadata>
+<trk>
+  <name>gopro7-track</name>
+<trkseg>
+	<trkpt lat="33.1266299" lon="-117.3274386">
+		<ele>-18.524</ele>
+		<time>2018-03-23T17:25:37Z</time>
+		<extensions>
+		<gpxtpx:TrackPointExtension>
+		    <gpxtpx:hr>0</gpxtpx:hr>
+		    <gpxtpx:cad>0</gpxtpx:cad>
+		    <gpxtpx:speed>0.71</gpxtpx:speed>
+		    <gpxtpx:distance>0</gpxtpx:distance>
+		   </gpxtpx:TrackPointExtension>
+		<gpxx:TrackPointExtension/>
+		</extensions>
+	</trkpt>
+	<trkpt lat="33.1266368" lon="-117.3274445">
+		<ele>-18.352</ele>
+		<time>2018-03-23T17:25:38Z</time>
+		<extensions>
+		<gpxtpx:TrackPointExtension>
+		    <gpxtpx:hr>0</gpxtpx:hr>
+		    <gpxtpx:cad>0</gpxtpx:cad>
+		    <gpxtpx:speed>1.12</gpxtpx:speed>
+		    <gpxtpx:distance>0</gpxtpx:distance>
+		   </gpxtpx:TrackPointExtension>
+		<gpxx:TrackPointExtension/>
+		</extensions>
+	</trkpt>
+	<trkpt lat="33.1266453" lon="-117.3274517">
+		<ele>-18.056</ele>
+		<time>2018-03-23T17:25:39Z</time>
+		<extensions>
+		<gpxtpx:TrackPointExtension>
+		    <gpxtpx:hr>0</gpxtpx:hr>
+		    <gpxtpx:cad>0</gpxtpx:cad>
+		    <gpxtpx:speed>1.277</gpxtpx:speed>
+		    <gpxtpx:distance>0</gpxtpx:distance>
+		   </gpxtpx:TrackPointExtension>
+		<gpxx:TrackPointExtension/>
+		</extensions>
+	</trkpt>
+	<trkpt lat="33.1266554" lon="-117.3274585">
+		<ele>-17.694</ele>
+		<time>2018-03-23T17:25:40Z</time>
+		<extensions>
+		<gpxtpx:TrackPointExtension>
+		    <gpxtpx:hr>0</gpxtpx:hr>
+		    <gpxtpx:cad>0</gpxtpx:cad>
+		    <gpxtpx:speed>1.351</gpxtpx:speed>
+		    <gpxtpx:distance>0</gpxtpx:distance>
+		   </gpxtpx:TrackPointExtension>
+		<gpxx:TrackPointExtension/>
+		</extensions>
+	</trkpt>
+	<trkpt lat="33.1266668" lon="-117.3274685">
+		<ele>-17.517</ele>
+		<time>2018-03-23T17:25:41Z</time>
+		<extensions>
+		<gpxtpx:TrackPointExtension>
+		    <gpxtpx:hr>0</gpxtpx:hr>
+		    <gpxtpx:cad>0</gpxtpx:cad>
+		    <gpxtpx:speed>1.48</gpxtpx:speed>
+		    <gpxtpx:distance>0</gpxtpx:distance>
+		   </gpxtpx:TrackPointExtension>
+		<gpxx:TrackPointExtension/>
+		</extensions>
+	</trkpt>
+	<trkpt lat="33.1266785" lon="-117.3274775">
+		<ele>-17.151</ele>
+		<time>2018-03-23T17:25:42Z</time>
+		<extensions>
+		<gpxtpx:TrackPointExtension>
+		    <gpxtpx:hr>0</gpxtpx:hr>
+		    <gpxtpx:cad>0</gpxtpx:cad>
+		    <gpxtpx:speed>1.556</gpxtpx:speed>
+		    <gpxtpx:distance>0</gpxtpx:distance>
+		   </gpxtpx:TrackPointExtension>
+		<gpxx:TrackPointExtension/>
+		</extensions>
+	</trkpt>
+	<trkpt lat="33.1266889" lon="-117.3274867">
+		<ele>-16.792</ele>
+		<time>2018-03-23T17:25:43Z</time>
+		<extensions>
+		<gpxtpx:TrackPointExtension>
+		    <gpxtpx:hr>0</gpxtpx:hr>
+		    <gpxtpx:cad>0</gpxtpx:cad>
+		    <gpxtpx:speed>1.548</gpxtpx:speed>
+		    <gpxtpx:distance>0</gpxtpx:distance>
+		   </gpxtpx:TrackPointExtension>
+		<gpxx:TrackPointExtension/>
+		</extensions>
+	</trkpt>
+	<trkpt lat="33.1266985" lon="-117.3274978">
+		<ele>-16.682</ele>
+		<time>2018-03-23T17:25:44Z</time>
+		<extensions>
+		<gpxtpx:TrackPointExtension>
+		    <gpxtpx:hr>0</gpxtpx:hr>
+		    <gpxtpx:cad>0</gpxtpx:cad>
+		    <gpxtpx:speed>1.362</gpxtpx:speed>
+		    <gpxtpx:distance>0</gpxtpx:distance>
+		   </gpxtpx:TrackPointExtension>
+		<gpxx:TrackPointExtension/>
+		</extensions>
+	</trkpt>
+	<trkpt lat="33.1267104" lon="-117.327507">
+		<ele>-16.426</ele>
+		<time>2018-03-23T17:25:45Z</time>
+		<extensions>
+		<gpxtpx:TrackPointExtension>
+		    <gpxtpx:hr>0</gpxtpx:hr>
+		    <gpxtpx:cad>0</gpxtpx:cad>
+		    <gpxtpx:speed>1.508</gpxtpx:speed>
+		    <gpxtpx:distance>0</gpxtpx:distance>
+		   </gpxtpx:TrackPointExtension>
+		<gpxx:TrackPointExtension/>
+		</extensions>
+	</trkpt>
+	<trkpt lat="33.1267226" lon="-117.3275134">
+		<ele>-16.268</ele>
+		<time>2018-03-23T17:25:46Z</time>
+		<extensions>
+		<gpxtpx:TrackPointExtension>
+		    <gpxtpx:hr>0</gpxtpx:hr>
+		    <gpxtpx:cad>0</gpxtpx:cad>
+		    <gpxtpx:speed>1.343</gpxtpx:speed>
+		    <gpxtpx:distance>0</gpxtpx:distance>
+		   </gpxtpx:TrackPointExtension>
+		<gpxx:TrackPointExtension/>
+		</extensions>
+	</trkpt>
+	<trkpt lat="33.1267351" lon="-117.3275191">
+		<ele>-16.23</ele>
+		<time>2018-03-23T17:25:47Z</time>
+		<extensions>
+		<gpxtpx:TrackPointExtension>
+		    <gpxtpx:hr>0</gpxtpx:hr>
+		    <gpxtpx:cad>0</gpxtpx:cad>
+		    <gpxtpx:speed>1.366</gpxtpx:speed>
+		    <gpxtpx:distance>0</gpxtpx:distance>
+		   </gpxtpx:TrackPointExtension>
+		<gpxx:TrackPointExtension/>
+		</extensions>
+	</trkpt>
+	<trkpt lat="33.1267466" lon="-117.3275254">
+		<ele>-16.146</ele>
+		<time>2018-03-23T17:25:48Z</time>
+		<extensions>
+		<gpxtpx:TrackPointExtension>
+		    <gpxtpx:hr>0</gpxtpx:hr>
+		    <gpxtpx:cad>0</gpxtpx:cad>
+		    <gpxtpx:speed>1.384</gpxtpx:speed>
+		    <gpxtpx:distance>0</gpxtpx:distance>
+		   </gpxtpx:TrackPointExtension>
+		<gpxx:TrackPointExtension/>
+		</extensions>
+	</trkpt>
+	<trkpt lat="33.1267582" lon="-117.3275333">
+		<ele>-16.097</ele>
+		<time>2018-03-23T17:25:49Z</time>
+		<extensions>
+		<gpxtpx:TrackPointExtension>
+		    <gpxtpx:hr>0</gpxtpx:hr>
+		    <gpxtpx:cad>0</gpxtpx:cad>
+		    <gpxtpx:speed>1.492</gpxtpx:speed>
+		    <gpxtpx:distance>0</gpxtpx:distance>
+		   </gpxtpx:TrackPointExtension>
+		<gpxx:TrackPointExtension/>
+		</extensions>
+	</trkpt>
+	<trkpt lat="33.1267697" lon="-117.3275411">
+		<ele>-15.988</ele>
+		<time>2018-03-23T17:25:50Z</time>
+		<extensions>
+		<gpxtpx:TrackPointExtension>
+		    <gpxtpx:hr>0</gpxtpx:hr>
+		    <gpxtpx:cad>0</gpxtpx:cad>
+		    <gpxtpx:speed>1.527</gpxtpx:speed>
+		    <gpxtpx:distance>0</gpxtpx:distance>
+		   </gpxtpx:TrackPointExtension>
+		<gpxx:TrackPointExtension/>
+		</extensions>
+	</trkpt>
+	<trkpt lat="33.1267798" lon="-117.3275494">
+		<ele>-15.656</ele>
+		<time>2018-03-23T17:25:51Z</time>
+		<extensions>
+		<gpxtpx:TrackPointExtension>
+		    <gpxtpx:hr>0</gpxtpx:hr>
+		    <gpxtpx:cad>0</gpxtpx:cad>
+		    <gpxtpx:speed>1.156</gpxtpx:speed>
+		    <gpxtpx:distance>0</gpxtpx:distance>
+		   </gpxtpx:TrackPointExtension>
+		<gpxx:TrackPointExtension/>
+		</extensions>
+	</trkpt>
+</trkseg>
+</trk>
+</gpx>
