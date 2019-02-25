@@ -181,7 +181,7 @@ please extract the raw data and send me them (see [extracting data](#extracting-
 * hero6 (all the points) ![Fusion](doc/hero6_noskip.png "Fusion")
 * hero6 (only `GPSFIX!=0`) ![Fusion](doc/hero6_skip.png "Fusion")
 * karma ![Fusion](doc/karma.png "Fusion")
-
+* Gopro7 ![Gopro7](doc/gopro7.png "Gopro7")
 # Status and future work
 
 Currently, `gopro2gpx` generates *hard-formatted* `kml`, and a useful `gpx` file. But:
