@@ -152,7 +152,7 @@ def generate_KML(gps_points):
         <LineString>
             <extrude>1</extrude>
             <tessellate>1</tessellate>
-            <altitudeMode>absoluto</altitudeMode>
+            <altitudeMode>absolute</altitudeMode>
             <coordinates> 
                 %s
             </coordinates>
