@@ -8,25 +8,23 @@
 #
 
 
-import subprocess
-import re
-import struct
+import argparse
+import array
 import os
 import platform
-import argparse
-from collections import namedtuple
-import array
+import re
+import struct
+import subprocess
 import sys
 import time
+from collections import namedtuple
 from datetime import datetime
 
-import config
-import gpmf
-import fourCC
-import time
-import sys
+from .config import setup_environment
+from . import fourCC
+from . import gpmf
+from . import gpshelper
 
-import gpshelper
 
 def BuildGPSPoints(data, skip=False):
     """
@@ -136,7 +134,7 @@ def parseArgs():
 
 def main():
     args = parseArgs()
-    config = config.setup_environment(args)
+    config = setup_environment(args)
     parser = gpmf.Parser(config)
 
     if not args.binary:
