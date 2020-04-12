@@ -152,16 +152,12 @@ def main():
         sys.exit(0)
 
     kml = gpshelper.generate_KML(points)
-    fd = open("%s.kml" % args.outputfile , "w+")
-    fd.write(kml)
-    fd.close()
+    with open("%s.kml" % args.outputfile , "w+") as fd:
+        fd.write(kml)
 
     gpx = gpshelper.generate_GPX(points, trk_name="gopro7-track")
-    fd = open("%s.gpx" % args.outputfile , "w+")
-    fd.write(gpx)
-    fd.close()
-
-   # falla el 46 y el 48
+    with open("%s.gpx" % args.outputfile , "w+") as fd:
+        fd.write(gpx)
 
 if __name__ == "__main__":
     main()
