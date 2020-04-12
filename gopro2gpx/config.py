@@ -1,5 +1,5 @@
 #
-# 17/02/2019 
+# 17/02/2019
 # Juan M. Casillas <juanm.casillas@gmail.com>
 # https://github.com/juanmcasillas/gopro2gpx.git
 #
@@ -7,6 +7,7 @@
 #
 
 import os
+import configparser
 import platform
 import sys
 
@@ -17,19 +18,35 @@ class Config:
 
 def setup_environment(args):
     """
-    The output of platform.system() is as follows:
-    Linux: Linux
-    Mac: Darwin
-    Windows: Windows
+    Setup ffmpeg environment and commandline arguments.
+    First check for config file, if it doesn't exist ffmpeg is assumed to be installed
+    somewhere in PATH
     """
-    if platform.system().lower() == 'windows':
-        config = Config('C:\\Software\\ffmpeg\\bin\\ffmpeg.exe', 'C:\\Software\\ffmpeg\\bin\\ffprobe.exe')
+    windows = platform.system() == 'Windows'
+    # find config path depending on OS
+    if windows:
+        config_path = os.path.expandvars(r"%APPDATA%\gopro2gpx\gopro2gpx.conf")
     else:
-        config = Config('/usr/bin/ffmpeg', '/usr/bin/ffprobe')
+        if os.environ.get('XDG_CONFIG_HOME', False):
+            config_path = os.path.expandvars("$XDG_CONFIG_HOME/gopro2gpx.conf")
+        else:
+            config_path = os.path.expandvars("$HOME/.config/gopro2gpx.conf")
 
+    # read config if it exists
+    if os.path.exists(config_path):
+        conf = configparser.ConfigParser()
+        conf.read(config_path)
+        ffmpeg, ffprobe = conf["ffmpeg"]["ffmpeg"], conf["ffmpeg"]["ffprobe"]
+    else:
+        # otherwise assume ffmpeg and ffprobe are in path
+        if windows:
+            ffmpeg, ffprobe = "ffmpeg.exe", "ffprobe.exe"
+        else:
+            ffmpeg, ffprobe = "ffmpeg", "ffprobe"
 
+    config = Config(ffmpeg, ffprobe)
 
-    # configure arguments
+    # configure CLI arguments
     config.verbose = args.verbose
     config.file = args.file
     config.outputfile = args.outputfile
