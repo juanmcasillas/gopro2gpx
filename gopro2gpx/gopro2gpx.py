@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# 17/02/2019 
+# 17/02/2019
 # Juan M. Casillas <juanm.casillas@gmail.com>
 # https://github.com/juanmcasillas/gopro2gpx.git
 #
@@ -41,10 +41,10 @@ def BuildGPSPoints(data, skip=False):
 
     points = []
     SCAL = fourCC.XYZData(1.0, 1.0, 1.0)
-    GPSU = None    
+    GPSU = None
     SYST = fourCC.SYSTData(0, 0)
 
-    stats = { 
+    stats = {
         'ok': 0,
         'badfix': 0,
         'badfixskip': 0,
@@ -72,7 +72,7 @@ def BuildGPSPoints(data, skip=False):
                 if skip:
                     print("Warning: Skipping point due GPSFIX==0")
                     stats['badfixskip'] += 1
-                    continue                    
+                    continue
 
             data = [ float(x) / float(y) for x,y in zip( d.data._asdict().values() ,list(SCAL) ) ]
             gpsdata = fourCC.GPSData._make(data)
@@ -100,17 +100,17 @@ def BuildGPSPoints(data, skip=False):
                     print("Warning: Skipping point due GPSFIX==0")
                     stats['badfixskip'] += 1
                     continue
-                    
+
             data = [ float(x) / float(y) for x,y in zip( d.data._asdict().values() ,list(SCAL) ) ]
             gpsdata = fourCC.KARMAGPSData._make(data)
-            
+
             if SYST.seconds != 0 and SYST.miliseconds != 0:
                 p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, datetime.fromtimestamp(SYST.miliseconds), gpsdata.speed)
                 points.append(p)
                 stats['ok'] += 1
-                        
 
- 
+
+
 
     print("-- stats -----------------")
     total_points =0
@@ -132,10 +132,9 @@ def parseArgs():
     parser.add_argument("outputfile", help="output file. builds KML and GPX")
     args = parser.parse_args()
 
-    return args        
+    return args
 
-if __name__ == "__main__":
-
+def main():
     args = parseArgs()
     config = config.setup_environment(args)
     parser = gpmf.Parser(config)
@@ -163,5 +162,8 @@ if __name__ == "__main__":
     fd = open("%s.gpx" % args.outputfile , "w+")
     fd.write(gpx)
     fd.close()
-   
+
    # falla el 46 y el 48
+
+if __name__ == "__main__":
+    main()
