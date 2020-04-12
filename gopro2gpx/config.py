@@ -20,12 +20,12 @@ def setup_environment(args):
     The output of platform.system() is as follows:
     Linux: Linux
     Mac: Darwin
-    Windows: Windows        
+    Windows: Windows
     """
     if platform.system().lower() == 'windows':
         config = Config('C:\\Software\\ffmpeg\\bin\\ffmpeg.exe', 'C:\\Software\\ffmpeg\\bin\\ffprobe.exe')
     else:
-        config = Config('/usr/local/bin/ffmpeg', '/usr/local/bin/ffprobe')
+        config = Config('/usr/bin/ffmpeg', '/usr/bin/ffprobe')
 
 
 
@@ -35,4 +35,4 @@ def setup_environment(args):
     config.outputfile = args.outputfile
     return config
 
-    
+
