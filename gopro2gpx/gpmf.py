@@ -60,7 +60,7 @@ class Parser:
 
     def readFromBinary(self):
         """read data from binary file, instead extract the metadata track from video. Useful for quick development
-           -vv creates a dump file with the  binary data called dump_binary.bin
+           -vv creates a dump file with the  binary data called dump_binary.raw
         """
         if not os.path.exists(self.file):
             raise FileNotFoundError("Can't open %s" % self.file)
@@ -74,7 +74,7 @@ class Parser:
 
         if self.verbose == 2:
             print("Creating output file for binary data (from binary): %s" % self.outputfile)
-            f = open("%s.bin" % self.outputfile, "wb")
+            f = open("%s.raw" % self.outputfile, "wb")
             f.write(data)
             f.close()
 
@@ -99,6 +99,8 @@ class Parser:
                 klvlist.append(klv)
                 if self.verbose == 3:
                     print(klv)
+            else:
+                print("Warking, skipping klv", klv)
             offset += 8
             if klv.type != 0:
                 offset += klv.padded_length

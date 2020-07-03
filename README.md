@@ -55,6 +55,12 @@ ffprobe = /path/to/ffprobe
  ```shell
     % gopro2gpx -s -vvv samples/hero6.mp4 hero6
  ```
+5. Custom run
+```
+cd gopro2gpx
+export PATH=$PATH:/usr/local/opt/ffmpeg/bin
+ python3 -m gopro2gpx.gopro2gpx -vvv samples/8/GH010159.MP4 output.bin
+```
 
 # Arguments and options
 

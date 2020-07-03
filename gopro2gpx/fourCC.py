@@ -325,6 +325,15 @@ labels = {
 		"ALLD" : LabelEmpty,
 		"ORIO" : Label_TypecString,
   
+		#gopro8 fix
+        "GPSA" : LabelEmpty, ## Unknown GPS data        ## New for Hero8?
+        "IORI" : LabelEmpty, ## Image Orientation       ## New for Hero8?        
+        "CORI" : LabelEmpty, ## Camera Orientation      ## New for Hero8?        
+        "GRAV" : LabelEmpty, ## Gravity Vector          ## New for Hero8?            
+        "WNDM" : LabelEmpty, ## Window Processing       ## New for Hero8?         
+        "MWET" : LabelEmpty, ## Microphone Wet          ## New for Hero8?   
+        "AALP" : LabelEmpty, ## AGC Audio Level         ## New for Hero8?		
+
         # not defined in document
         "YAVG" : LabelEmpty,
 		"SCEN" : LabelEmpty,

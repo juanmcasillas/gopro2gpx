@@ -144,7 +144,6 @@ def main():
 
     # build some funky tracks from camera GPS
 
-    print(args.skip)
     points = BuildGPSPoints(data, skip=args.skip)
 
     if len(points) == 0:
