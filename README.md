@@ -28,21 +28,32 @@ My idea is process the file in python, extract the data, and build a file in a k
 
 # Installation
 
-1. Clone the repo [gopro2gpx](https://github.com/juanmcasillas/gopro2gpx.git) in your machine, extract it.
-2. Ensure you have **python3**, **FFmpeg** and **FFprobe** installed in your system.
-3. Edit `config.py` and modify the following lines to point to your binaries:
+1. Package installation: there are two ways to install the package:
+   a) Install via pip (with git installed):
+```
+pip install git+https://github.com/juanmcasillas/gopro2gpx
+```
+   b) *Or* Download the repository, unpack it and instal with
+```
+python setup.py install
+```
+2. Ensure you have **FFmpeg** and **FFprobe** installed in your system.
+3. If ffmpeg is not installed in a `PATH` location, the path can be specified in the config file.
 
-```python    
-     if platform.system().lower() == 'windows':
-        config = Config('C:\\Software\\ffmpeg\\bin\\ffmpeg.exe', 'C:\\Software\\ffmpeg\\bin\\ffprobe.exe')
-    else:
-        config = Config('/usr/local/bin/ffmpeg', '/usr/local/bin/ffprobe')
-```    
+   The configuration file is located in:
+   - Windows: `%APPDATA%\gopro2gpx\gopro2gpx.conf`
+   - Unix (Linux, Mac): `$HOME/.config/gopro2gpx.conf` (`$XDG_CONFIG_HOME/gopro2gpx.conf` to be exact)
 
+   The configuration file has to look like this:
+```
+[ffmpeg]
+ffmpeg = /path/to/ffmpeg
+ffprobe = /path/to/ffprobe
+```
  4. Run it (skip bad points, show the labels debug, create `hero6.kml` and `hero6.gpx` files)
 
  ```shell
-    % python gopro2gpx.py -s -vvv samples/hero6.mp4 hero6
+    % gopro2gpx -s -vvv samples/hero6.mp4 hero6
  ```
 
 # Arguments and options
@@ -79,7 +90,7 @@ Follow these steps:
 Read the following thread for more info:
 * [GOPRO Forum](https://community.gopro.com/t5/GoPro-Apps-for-Desktop/GPS-data-all-wrong/td-p/200091?profile.language=es)
 
-# Technnical info
+# Technical info
 
 To get the **gpmd** data, we need to explore the MP4 container, and extract the stream marked as *gpmd*. The script does it
 automatically, but here is the output from `ffprobe`:

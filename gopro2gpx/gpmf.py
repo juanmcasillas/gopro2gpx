@@ -1,5 +1,5 @@
 #
-# 17/02/2019 
+# 17/02/2019
 # Juan M. Casillas <juanm.casillas@gmail.com>
 # https://github.com/juanmcasillas/gopro2gpx.git
 #
@@ -12,15 +12,14 @@
 #   https://github.com/stilldavid/gopro-utils/blob/master/telemetry/reader.go
 
 
-import os
 import array
-import sys
+import os
 import struct
+import sys
 
-from ffmpegtools import FFMpegTools
-from klvdata import KLVData
+from .ffmpegtools import FFMpegTools
+from .klvdata import KLVData
 
-       
 
 class Parser:
     def __init__(self, config):
@@ -32,19 +31,19 @@ class Parser:
         self.file = config.file
         self.outputfile = config.outputfile
 
-    
+
     def readFromMP4(self):
         """read data the metadata track from video. Requires FFMPEG wrapper.
            -vv creates a dump file with the  binary data called dump_track.bin
         """
-        
+
         if not os.path.exists(self.file):
             raise FileNotFoundError("Can't open %s" % self.file)
 
         track_number, lineinfo = self.ffmtools.getMetadataTrack(self.file)
         if not track_number:
             raise Exception("File %s doesn't have any metadata" % self.file)
-        
+
         if self.verbose:
             print("Working on file %s track %s (%s)" % (self.file, track_number, lineinfo))
         metadata_raw = self.ffmtools.getMetadata(track_number, self.file)
@@ -53,8 +52,8 @@ class Parser:
             print("Creating output file for binary data (fromMP4): %s" % self.outputfile)
             f = open("%s.bin" % self.outputfile, "wb")
             f.write(metadata_raw)
-            f.close() 
-        
+            f.close()
+
         # process the data here
         metadata = self.parseStream(metadata_raw)
         return(metadata)
@@ -68,7 +67,7 @@ class Parser:
 
         if self.verbose:
             print("Reading binary file %s" % (self.file))
-        
+
         fd = open(self.file, 'rb')
         data = fd.read()
         fd.close()
@@ -77,10 +76,10 @@ class Parser:
             print("Creating output file for binary data (from binary): %s" % self.outputfile)
             f = open("%s.bin" % self.outputfile, "wb")
             f.write(data)
-            f.close() 
+            f.close()
 
         # process the data here
-        metadata = self.parseStream(data)   
+        metadata = self.parseStream(data)
         return metadata
 
     def parseStream(self, data_raw):
@@ -94,7 +93,7 @@ class Parser:
         klvlist = []
 
         while offset < len(data):
-            
+
             klv = KLVData(data,offset)
             if not klv.skip():
                 klvlist.append(klv)
@@ -104,9 +103,5 @@ class Parser:
             if klv.type != 0:
                 offset += klv.padded_length
                 #print(">offset:%d length:%d padded:%d" % (offset, length, padded_length))
-            
+
         return(klvlist)
-    
-
-
-            
