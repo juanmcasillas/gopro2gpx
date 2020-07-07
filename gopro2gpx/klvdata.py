@@ -48,7 +48,7 @@ class KLVData:
             rawdata = 'null'
             rawdatas = 'null'
 
-        s = "%s %s %d %s {%s} |%s| [%s]" % (self.fourCC, stype, self.size, self.repeat, self.data, rawdatas, rawdata)
+        s = "fourCC=%s type=%s size=%d repeat=%s data={%s} raws=|%s| raw=[%s]" % (self.fourCC, stype, self.size, self.repeat, self.data, rawdatas, rawdata)
         return(s)
 
     def pad(self,n, base=4):

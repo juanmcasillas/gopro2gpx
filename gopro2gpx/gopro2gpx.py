@@ -51,6 +51,7 @@ def BuildGPSPoints(data, skip=False):
 
     GPSFIX = 0 # no lock.
     for d in data:
+        
         if d.fourCC == 'SCAL':
             SCAL = d.data
         elif d.fourCC == 'GPSU':
@@ -60,23 +61,29 @@ def BuildGPSPoints(data, skip=False):
                 print("GPSFIX change to %s [%s]" % (d.data,fourCC.LabelGPSF.xlate[d.data]))
             GPSFIX = d.data
         elif d.fourCC == 'GPS5':
-            if d.data.lon == d.data.lat == d.data.alt == 0:
-                print("Warning: Skipping empty point")
-                stats['empty'] += 1
-                continue
+            # we have to use the REPEAT value.
 
-            if GPSFIX == 0:
-                stats['badfix'] += 1
-                if skip:
-                    print("Warning: Skipping point due GPSFIX==0")
-                    stats['badfixskip'] += 1
+            for item in d.data:
+
+                if item.lon == item.lat == item.alt == 0:
+                    print("Warning: Skipping empty point")
+                    stats['empty'] += 1
                     continue
 
-            data = [ float(x) / float(y) for x,y in zip( d.data._asdict().values() ,list(SCAL) ) ]
-            gpsdata = fourCC.GPSData._make(data)
-            p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, datetime.fromtimestamp(time.mktime(GPSU)), gpsdata.speed)
-            points.append(p)
-            stats['ok'] += 1
+                if GPSFIX == 0:
+                    stats['badfix'] += 1
+                    if skip:
+                        print("Warning: Skipping point due GPSFIX==0")
+                        stats['badfixskip'] += 1
+                        continue
+
+                retdata = [ float(x) / float(y) for x,y in zip( item._asdict().values() ,list(SCAL) ) ]
+                
+
+                gpsdata = fourCC.GPSData._make(retdata)
+                p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, datetime.fromtimestamp(time.mktime(GPSU)), gpsdata.speed)
+                points.append(p)
+                stats['ok'] += 1
 
         elif d.fourCC == 'SYST':
             data = [ float(x) / float(y) for x,y in zip( d.data._asdict().values() ,list(SCAL) ) ]

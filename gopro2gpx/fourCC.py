@@ -211,15 +211,20 @@ class LabelGPS5(LabelBase):
 		LabelBase.__init__(self)
 
 	def Build(self, klvdata):
-		# 5 fields of length 4 (l)
+		# we need to check the REPEAT command.
+		
+		# 5 fields of length 4 (l) x repeat
 
 		if not klvdata.rawdata:
 			# empty point
-			data = GPSData(0,0,0,0,0)
+			data = [ GPSData(0,0,0,0,0) ]
 		else:
-			stype = map_type(klvdata.type)
-			s = struct.Struct('>' + stype * 5 )
-			data = GPSData._make( s.unpack_from(klvdata.rawdata) )
+			data = []
+			for r in range(klvdata.repeat):
+				stype = map_type(klvdata.type)
+				s = struct.Struct('>' + stype * 5 )
+				data_item = GPSData._make( s.unpack_from(klvdata.rawdata[r*4*5:(r+1)*4*5]) )
+				data.append(data_item)
 		return(data)
 
 class LabelGPRI(LabelBase):
@@ -281,8 +286,8 @@ class LabelTMPC(LabelBase):
 		LabelBase.__init__(self)
 
 skip_labels = [ 
-	"TIMO", "HUES", "SCEN", "YAVG", "ISOE", "FACE", "SHUT", "WBAL", "WRGB", "UNIF", "FCNM", "MTRX", "ORIN", "ORIO",
-	"FWVS", "KBAT", "ATTD",	"GLPI",	"VFRH",	"BPOS",	"ATTR",	"SIMU",	"ESCS",	"SCPR",	"LNED",	"CYTS",	"CSEN" 
+	#"TIMO", "YAVG", "ISOE", "FACE", "SHUT", "WBAL", "WRGB", "UNIF", "FCNM", 
+	#"FWVS", "KBAT", "ATTD",	"GLPI",	"VFRH",	"BPOS",	"ATTR",	"SIMU",	"ESCS",	"SCPR",	"LNED",	"CYTS",	"CSEN" 
 ]
 
 labels = {
@@ -357,7 +362,15 @@ labels = {
 		"LNED" : LabelEmpty, ## Karma Drone
 		"CYTS" : LabelEmpty, ## Karma Drone
 		"CSEN" : LabelEmpty ## Karma Drone
-	
+
+		,
+		# misc keys
+		"SCEN" : LabelEmpty,
+		"HUES" : LabelEmpty,
+		"FACE" : LabelEmpty,
+		"MTRX" : LabelEmpty,
+		"ORIN" : LabelEmpty,
+		"ORIO" : LabelEmpty
 }
 
 def Manage(klvdata):
