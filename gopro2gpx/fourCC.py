@@ -370,7 +370,13 @@ labels = {
 		"FACE" : LabelEmpty,
 		"MTRX" : LabelEmpty,
 		"ORIN" : LabelEmpty,
-		"ORIO" : LabelEmpty
+		"ORIO" : LabelEmpty,
+
+		# hero 9 fix
+		"MSKP" : LabelEmpty,
+		"LRVO" : LabelEmpty,
+		"LRVS" : LabelEmpty,
+		"LSKP" : LabelEmpty
 }
 
 def Manage(klvdata):
