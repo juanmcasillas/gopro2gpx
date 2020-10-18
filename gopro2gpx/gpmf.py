@@ -100,7 +100,12 @@ class Parser:
                 if self.verbose == 3:
                     print(klv)
             else:
-                print("Warning, skipping klv", klv)
+                if klv: 
+                    print("Warning, skipping klv", klv)
+                else:
+                    # unknown label
+                    pass
+                    
             offset += 8
             if klv.type != 0:
                 offset += klv.padded_length
