@@ -87,7 +87,7 @@ class Parser:
         main code that reads the points
         """
         data = array.array('b')
-        data.fromstring(data_raw)
+        data.frombytes(data_raw)
 
         offset = 0
         klvlist = []
