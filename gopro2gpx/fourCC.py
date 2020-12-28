@@ -377,7 +377,13 @@ labels = {
 		"LRVO" : LabelEmpty,
 		"LRVS" : LabelEmpty,
 		"LSKP" : LabelEmpty,
-		"VPTS" : LabelEmpty
+		"VPTS" : LabelEmpty,
+
+		# gopro MAX  fix
+		"CORI": LabelEmpty,  # Camera ORIentation
+		"IORI": LabelEmpty,  # Image ORIentation
+		"GRAV": LabelEmpty,  # GRAvity Vector
+		"DISP": LabelEmpty  # Disparity track (360 modes)
 }
 
 def Manage(klvdata):
