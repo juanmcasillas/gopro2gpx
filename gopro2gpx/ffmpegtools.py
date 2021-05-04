@@ -8,6 +8,7 @@
 
 import subprocess
 import re
+import json
 
 class FFMpegTools:
 
@@ -23,6 +24,82 @@ class FFMpegTools:
         result = subprocess.run([ cmd ] + args, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
         output = result.stdout
         return output
+
+    def getMetadataTrackFromJSON(self, fname):
+        """ 
+            % ffprobe -print_format json -show_streams video.mp4 
+            % ffprobe -v quiet -print_format json -show_format -show_streams video.mp4"
+
+            {
+                "streams": [
+                    {
+                        "index": 0,
+                        "codec_name": "h264",
+                        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+                        ...
+                    },
+                    {
+                        "index": 1,
+                        "codec_name": "aac",
+                        "codec_long_name": "AAC (Advanced Audio Coding)",
+                        ...
+                    },
+                    {
+                        "index": 2,
+                        "codec_type": "data",
+                        "codec_tag_string": "tmcd",
+                        ...
+                    },
+                    {
+                        "index": 3,
+                        "codec_name": "bin_data",
+                        "codec_long_name": "binary data",
+                        "codec_type": "data",
+                        "codec_tag_string": "gpmd",
+                        "codec_tag": "0x646d7067",
+                        "r_frame_rate": "0/0",
+                        "avg_frame_rate": "0/0",
+                        "time_base": "1/1000",
+                        "start_pts": 0,
+                        "start_time": "0.000000",
+                        "duration_ts": 29663,
+                        "duration": "29.663000",
+                        "bit_rate": "48730",
+                        "nb_frames": "31",
+                        "disposition": {
+                            "default": 1,
+                            "dub": 0,
+                            "original": 0,
+                            "comment": 0,
+                            "lyrics": 0,
+                            "karaoke": 0,
+                            "forced": 0,
+                            "hearing_impaired": 0,
+                            "visual_impaired": 0,
+                            "clean_effects": 0,
+                            "attached_pic": 0,
+                            "timed_thumbnails": 0
+                        },
+                        "tags": {
+                            "creation_time": "2021-03-26T09:44:06.000000Z",
+                            "language": "eng",
+                            "handler_name": "\tGoPro MET"
+                        }
+                    }
+                ],
+                "format": {
+                    ...
+                }
+            }
+        """
+        args = ['-print_format', 'json', '-show_streams', fname]
+
+        md = json.loads(self.runCmdRaw(self.config.ffprobe_cmd, args))
+        stream = next((stream for stream in md['streams'] if stream['codec_tag_string'] == 'gpmd'), None)
+
+        if not stream:
+            return(None)
+        return(int(stream["index"]), stream)
 
     def getMetadataTrack(self, fname):
         """
