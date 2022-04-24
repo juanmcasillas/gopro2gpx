@@ -81,7 +81,7 @@ def BuildGPSPoints(data, skip=False):
                 
 
                 gpsdata = fourCC.GPSData._make(retdata)
-                p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, datetime.fromtimestamp(time.mktime(GPSU)), gpsdata.speed)
+                p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, GPSU, gpsdata.speed)
                 points.append(p)
                 stats['ok'] += 1
 
