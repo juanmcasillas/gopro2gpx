@@ -10,12 +10,37 @@ import os
 import configparser
 import platform
 import sys
+import subprocess
+import re
+
+class E:
+    def __init__(self):
+        pass
 
 class Config:
     def __init__(self, ffmpeg, ffprobe):
         self.ffmpeg_cmd = ffmpeg
         self.ffprobe_cmd = ffprobe
+        # get ffmpeg version
+        self.version = E()
+        self.version.major = 4
+        self.version.medium = 3
+        self.version.minor = 1
+        self.getFfmpegVersion()
+        self.use_json_format = False
+        if self.version.medium >= 4:
+            self.use_json_format = True
 
+    def getFfmpegVersion(self):
+        result = subprocess.run([ self.ffmpeg_cmd ] + ['-version'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        version_info = result.stdout.decode('utf-8')
+        version_info_reg = re.compile('ffmpeg version (\d+)\.(\d+)\.(\d+)', flags=re.I)
+        m = version_info_reg.search(version_info)
+        if m and len(m.groups()) == 3:
+            self.version.major = int(m.group(1))
+            self.version.medium = int(m.group(2))
+            self.version.minor = int(m.group(3))
+        
 def setup_environment(args):
     """
     Setup ffmpeg environment and commandline arguments.

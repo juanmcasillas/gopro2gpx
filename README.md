@@ -1,3 +1,9 @@
+# Updates
+
+* Added support for legacy versions of ffmpeg. If ffmpeg version is lower than 4.4 use the standard output format; else, uses the json format (contributed by [alycda](https://github.com/juanmcasillas/gopro2gpx/issues/13#issuecomment-832080667)).
+* Fixed regexp to support new formats (contributed by [sbwilli3](https://github.com/juanmcasillas/gopro2gpx/issues/13#issuecomment-1136660302))
+* Added label 'FSKP' (contributed by [designer2k2](https://github.com/juanmcasillas/gopro2gpx/issues/20#issue-942464545))
+
 # About gopro2gpx
 
 Python script that parses the gpmd stream for GOPRO moov track (MP4) and extract the GPS info into a GPX (and kml) file.  

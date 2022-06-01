@@ -378,6 +378,7 @@ labels = {
 		"LRVS" : LabelEmpty,
 		"LSKP" : LabelEmpty,
 		"VPTS" : LabelEmpty,
+		"FSKP" : LabelEmpty,
 
 		# gopro MAX  fix
 		"CORI": LabelEmpty,  # Camera ORIentation
