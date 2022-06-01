@@ -32,11 +32,11 @@ class GPSPoint:
 
 def UTCTime(timedata):
     #
-    # time comes: 2014-05-30 20:11:27
-    # should be formatted to 2014-05-30T20:11:17Z
+    # time comes: 2014-05-30 20:11:27.200
+    # should be formatted to 2014-05-30T20:11:17.200Z
     #
     
-    return timedata.strftime("%Y-%m-%dT%H:%M:%SZ")
+    return timedata.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
 
 def generate_GPX(points, trk_name="exercise"):
 
