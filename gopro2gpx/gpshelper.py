@@ -38,6 +38,16 @@ def UTCTime(timedata):
     
     return timedata.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
 
+def CSVTime(timedata):
+    #
+    # time comes: 2014-05-30 20:11:27.200
+    # should be formatted to 2014/05/30 20:11:17.200
+    # NEEDS TO BE FIXED, DOESNT PRODUCE SAME TIME AS DASHWARE FROM GPX
+    #
+    csvtime = timedata.strftime("%Y/%m/%d %H:%M:%S.%f")
+    csvtime = csvtime[:-3]
+    return csvtime
+
 def generate_GPX(points, trk_name="exercise"):
 
     """
@@ -171,3 +181,19 @@ def generate_KML(gps_points):
     coords = os.linesep.join(lines)
     kml = kml_template % coords
     return(kml)
+    
+    
+def generate_CSV(gps_points):
+    csv_template = """DashWare GPX CSV File
+Time,Latitude,Longitude,Elevation,AirTemp,HeartRate,Cadence,Power,Roll,Pitch
+%s"""
+
+    
+    lines = []
+    for p in gps_points:
+        s = "%s,%s,%s,%s,%s" % (CSVTime(p.time), p.latitude, p.longitude, p.elevation, ',,,,,')
+        lines.append(s)
+
+    coords = os.linesep.join(lines)
+    csv = csv_template % coords
+    return(csv)    
