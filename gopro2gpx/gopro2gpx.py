@@ -157,9 +157,13 @@ def main():
         print("Can't create file. No GPS info in %s. Exitting" % args.file)
         sys.exit(0)
 
-    kml = gpshelper.generate_KML(points)
-    with open("%s.kml" % args.outputfile , "w+") as fd:
-        fd.write(kml)
+    #kml = gpshelper.generate_KML(points)
+    #with open("%s.kml" % args.outputfile , "w+") as fd:
+    #    fd.write(kml)
+        
+    #csv = gpshelper.generate_CSV(points)
+    #with open("%s.csv" % args.outputfile , "w+") as fd:
+    #    fd.write(csv)
 
     gpx = gpshelper.generate_GPX(points, trk_name="gopro7-track")
     with open("%s.gpx" % args.outputfile , "w+") as fd:
