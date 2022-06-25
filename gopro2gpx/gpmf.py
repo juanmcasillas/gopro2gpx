@@ -48,8 +48,10 @@ class Parser:
             raise Exception("File %s doesn't have any metadata" % self.file)
 
         if self.verbose:
-            # print("Working on file %s track %s (%s)" % (self.file, track_number, lineinfo))
-            print("Working on file %s track %s (%s)" % (self.file, track_number, stream))
+            try:
+                print("Working on file %s track %s (%s)" % (self.file, track_number, stream))
+            except UnboundLocalError:
+                print("Working on file %s track %s (%s)" % (self.file, track_number, lineinfo))
         metadata_raw = self.ffmtools.getMetadata(track_number, self.file)
 
         if self.verbose == 2:
