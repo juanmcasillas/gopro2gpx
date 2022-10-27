@@ -1,5 +1,5 @@
 #
-# 17/02/2019 
+# 17/02/2019
 # Juan M. Casillas <juanm.casillas@gmail.com>
 # https://github.com/juanmcasillas/gopro2gpx.git
 #
@@ -35,7 +35,7 @@ def UTCTime(timedata):
     # time comes: 2014-05-30 20:11:27.200
     # should be formatted to 2014-05-30T20:11:17.200Z
     #
-    
+
     return timedata.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
 
 def CSVTime(timedata):
@@ -48,11 +48,14 @@ def CSVTime(timedata):
     csvtime = csvtime[:-3]
     return csvtime
 
-def generate_GPX(points, trk_name="exercise"):
+def generate_GPX(points, start_time=None, trk_name="exercise"):
 
     """
     Creates a GPX in 1.1 Format
     """
+
+    if start_time is None:
+        start_time = points[0].time
 
     xml  = '<?xml version="1.0" encoding="UTF-8"?>\r\n'
     gpx_attr = [
@@ -86,7 +89,7 @@ def generate_GPX(points, trk_name="exercise"):
     xml += "<gpx " + " ".join(gpx_attr) + ">\r\n"
 
     xml += "<metadata>\r\n"
-    xml += "  <time>%s</time>\r\n" % UTCTime(points[0].time) # first point !
+    xml += "  <time>%s</time>\r\n" % UTCTime(start_time)
     xml += "</metadata>\r\n"
     xml += "<trk>\r\n"
     xml += "  <name>%s</name>\r\n" % trk_name
@@ -136,7 +139,7 @@ def generate_GPX(points, trk_name="exercise"):
 
 def generate_KML(gps_points):
     """
-    
+
     use this for color
     http://www.zonums.com/gmaps/kml_color/
 
@@ -145,7 +148,7 @@ def generate_KML(gps_points):
     kml_template = """<?xml version="1.0" encoding="UTF-8"?>
     <kml xmlns="http://www.opengis.net/kml/2.2"> <Document>
     <name>Demo</name>
-    <description>Description Demo</description> 
+    <description>Description Demo</description>
     <Style id="yellowLineGreenPoly">
         <LineStyle>
             <color>FF1400BE</color>
@@ -163,16 +166,16 @@ def generate_KML(gps_points):
             <extrude>1</extrude>
             <tessellate>1</tessellate>
             <altitudeMode>absolute</altitudeMode>
-            <coordinates> 
+            <coordinates>
                 %s
             </coordinates>
-        </LineString> 
+        </LineString>
     </Placemark>
     </Document>
     </kml>
     """
 
-    
+
     lines = []
     for p in gps_points:
         s = "%s,%s,%s" % (p.longitude, p.latitude, p.elevation)
@@ -181,14 +184,14 @@ def generate_KML(gps_points):
     coords = os.linesep.join(lines)
     kml = kml_template % coords
     return(kml)
-    
-    
+
+
 def generate_CSV(gps_points):
     csv_template = """DashWare GPX CSV File
 Time,Latitude,Longitude,Elevation,AirTemp,HeartRate,Cadence,Power,Roll,Pitch
 %s"""
 
-    
+
     lines = []
     for p in gps_points:
         s = "%s,%s,%s,%s,%s" % (CSVTime(p.time), p.latitude, p.longitude, p.elevation, ',,,,,')
@@ -196,4 +199,4 @@ Time,Latitude,Longitude,Elevation,AirTemp,HeartRate,Cadence,Power,Roll,Pitch
 
     coords = os.linesep.join(lines)
     csv = csv_template % coords
-    return(csv)    
+    return(csv)
