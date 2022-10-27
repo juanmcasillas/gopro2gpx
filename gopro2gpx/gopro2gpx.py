@@ -118,6 +118,8 @@ def BuildGPSPoints(data, skip=False):
                 stats['ok'] += 1
 
 
+
+
     print("-- stats -----------------")
     total_points =0
     for i in stats.keys():
@@ -161,6 +163,7 @@ def main():
     #kml = gpshelper.generate_KML(points)
     #with open("%s.kml" % args.outputfile , "w+") as fd:
     #    fd.write(kml)
+
     #csv = gpshelper.generate_CSV(points)
     #with open("%s.csv" % args.outputfile , "w+") as fd:
     #    fd.write(csv)
