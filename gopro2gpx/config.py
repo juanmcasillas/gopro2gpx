@@ -40,7 +40,7 @@ class Config:
             self.version.major = int(m.group(1))
             self.version.medium = int(m.group(2))
             self.version.minor = int(m.group(3))
-        
+
 def setup_environment(args):
     """
     Setup ffmpeg environment and commandline arguments.
@@ -73,7 +73,7 @@ def setup_environment(args):
 
     # configure CLI arguments
     config.verbose = args.verbose
-    config.file = args.file
+    config.files = args.files
     config.outputfile = args.outputfile
     return config
 
