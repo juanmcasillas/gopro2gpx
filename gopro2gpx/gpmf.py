@@ -17,14 +17,13 @@ import os
 import struct
 import sys
 
-from .ffmpegtools import FFMpegTools
 from .klvdata import KLVData
 
 
 class Parser:
-    def __init__(self, config):
+    def __init__(self, config, ffmpegtools):
         self.config = config
-        self.ffmtools = FFMpegTools(self.config)
+        self.ffmtools = ffmpegtools
 
         # map some handy shortcuts
         self.verbose = config.verbose
@@ -39,18 +38,13 @@ class Parser:
         if not os.path.exists(in_file):
             raise FileNotFoundError("Can't open %s" % in_file)
 
-        if not self.config.use_json_format:
-            track_number, lineinfo = self.ffmtools.getMetadataTrack(in_file)
-        else:
-            track_number, stream = self.ffmtools.getMetadataTrackFromJSON(in_file)
+        track_number, info = self.ffmtools.getMetadataTrack(in_file)
+
         if not track_number:
             raise Exception("File %s doesn't have any metadata" % in_file)
 
         if self.verbose:
-            try:
-                print("Working on file %s track %s (%s)" % (in_file, track_number, stream))
-            except UnboundLocalError:
-                print("Working on file %s track %s (%s)" % (in_file, track_number, lineinfo))
+            print("Working on file %s track %s (%s)" % (in_file, track_number, info))
         metadata_raw = self.ffmtools.getMetadata(track_number, in_file)
 
         if self.verbose == 2:
@@ -71,7 +65,7 @@ class Parser:
             raise FileNotFoundError("Can't open %s" % in_file)
 
         if self.verbose:
-            print("Reading binary file %s" % (in_file))
+            print("Reading binary file %s" % in_file)
 
         fd = open(in_file, 'rb')
         data = fd.read()
