@@ -1,6 +1,9 @@
 from gopro2gpx import gopro2gpx
 import os
 
+dir_path = os.path.dirname(os.path.realpath(__file__)) + '/'
+
+
 class Args(object):
     def __init__(self):
         self.binary = False
@@ -9,8 +12,6 @@ class Args(object):
         self.files = []
         self.outputfile = None
 
-import os
-dir_path = os.path.dirname(os.path.realpath(__file__)) + '/'
 
 def test_sample_set():
 
