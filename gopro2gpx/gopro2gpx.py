@@ -145,27 +145,34 @@ def parseArgs():
 
 def main_core(args):
     config = setup_environment(args)
+    files = args.files
+    output_file = args.outputfile
     points = []
     start_time = None
     ffmpegtools = FFMpegTools(ffprobe=config.ffprobe_cmd, ffmpeg=config.ffmpeg_cmd)
-    for filename in args.files:
-        parser = gpmf.Parser(config, ffmpegtools)
+    data = []
+    for num, filename in enumerate(files):
+        reader = gpmf.GpmfFileReader(ffmpegtools, verbose=config.verbose)
 
         if not args.binary:
-            data = parser.readFromMP4(filename)
+            raw_data = reader.readRawTelemetryFromMP4(filename)
         else:
-            data = parser.readFromBinary(filename)
+            raw_data = reader.readRawTelemetryFromBinary(filename)
 
-        # build some funky tracks from camera GPS
+        if config.verbose == 2:
+            binary_filename = output_file + '.%02d.bin' % (num)
+            print("Creating output file for binary data: %s" % binary_filename)
+            f = open(binary_filename, "wb")
+            f.write(raw_data)
+            f.close()
 
-        file_points, file_start_time = BuildGPSPoints(data, skip=args.skip)
-        if start_time is None:
-            start_time = file_start_time
-        points += file_points
+        data += gpmf.parseStream(raw_data, config.verbose)
 
-        if len(points) == 0:
-            print("Can't create file. No GPS info in %s. Exitting" % args.files)
-            sys.exit(0)
+    points, start_time = BuildGPSPoints(data, skip=args.skip)
+
+    if len(points) == 0:
+        print("Can't create file. No GPS info in %s. Exitting" % args.files)
+        sys.exit(0)
 
     #kml = gpshelper.generate_KML(points)
     #with open("%s.kml" % args.outputfile , "w+") as fd:
