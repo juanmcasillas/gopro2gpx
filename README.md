@@ -6,13 +6,13 @@
 
 # About gopro2gpx
 
-Python script that parses the gpmd stream for GOPRO moov track (MP4) and extract the GPS info into a GPX (and kml) file.  
+Python script that parses the gpmd stream for GOPRO moov track (MP4) and extract the GPS info into a GPX (and kml) file.
 
-Tested on a GoPro7, but it should work on any camera above the GoPro5.  
+Tested on a GoPro7, but it should work on any camera above the GoPro5.
 
-Tested on Windows7 and MacOS Sierra. 
+Tested on Windows7 and MacOS Sierra.
 
-I always like to print some additional info overlaying my action videos. These overlays will show data about speed, elevation, 
+I always like to print some additional info overlaying my action videos. These overlays will show data about speed, elevation,
 gps info, and so on. I started a project wrotten on python 2.7 that works fine. gets a `gpx` track file, a `mp4` file and some
 configuration, and builds an overlay with the data:
 
@@ -92,7 +92,7 @@ optional arguments:
   -v, --verbose  increase output verbosity
   -b, --binary   read data from bin file
   -s, --skip     Skip bad points (GPSFIX=0)
-```  
+```
 
 * `file`: Gopro MP4 file or binary file with the gpmd dump.
 * `outputfile`: Dump the GPS info into `outputfile.kml` and `outputfile.gpx`. Don't use extension.
@@ -129,31 +129,31 @@ automatically, but here is the output from `ffprobe`:
         compatible_brands: mp41
         creation_time   : 2019-02-10 10:59:19
     Duration: 00:00:21.80, start: 0.000000, bitrate: 60420 kb/s
-        Stream #0:0(eng): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt709), 2704x1520 [SAR 1:1 DAR 169:95], 
+        Stream #0:0(eng): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt709), 2704x1520 [SAR 1:1 DAR 169:95],
         60173 kb/s, 50 fps, 50 tbr, 90k tbn, 100 tbc (default)
         Metadata:
         creation_time   : 2019-02-10 10:59:19
-        handler_name    : GoPro AVC  
+        handler_name    : GoPro AVC
         encoder         : GoPro AVC encoder
         timecode        : 10:59:19:31
         Stream #0:1(eng): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 189 kb/s (default)
         Metadata:
         creation_time   : 2019-02-10 10:59:19
-        handler_name    : GoPro AAC  
+        handler_name    : GoPro AAC
         timecode        : 10:59:19:31
         Stream #0:2(eng): Data: none (tmcd / 0x64636D74), 0 kb/s (default)
         Metadata:
         creation_time   : 2019-02-10 10:59:19
-        handler_name    : GoPro TCD  
+        handler_name    : GoPro TCD
         timecode        : 10:59:19:31
         Stream #0:3(eng): Data: none (gpmd / 0x646D7067), 29 kb/s (default)
         Metadata:
         creation_time   : 2019-02-10 10:59:19
-        handler_name    : GoPro MET  
+        handler_name    : GoPro MET
         Stream #0:4(eng): Data: none (fdsc / 0x63736466), 12 kb/s (default)
         Metadata:
         creation_time   : 2019-02-10 10:59:19
-        handler_name    : GoPro SOS  
+        handler_name    : GoPro SOS
 ```
 
 We need the stream called in this clase, `#0:3(eng)` that is, the `0:3` stream:
@@ -163,13 +163,13 @@ We need the stream called in this clase, `#0:3(eng)` that is, the `0:3` stream:
         Stream #0:3(eng): Data: none (gpmd / 0x646D7067), 29 kb/s (default)
         Metadata:
         creation_time   : 2019-02-10 10:59:19
-        handler_name    : GoPro MET  
-        [...]        
+        handler_name    : GoPro MET
+        [...]
 ```
 
 # Extracting the binary GPS data from MP4
 
-With this data, we can create a **binary file with the gpmd data inside**. The following command 
+With this data, we can create a **binary file with the gpmd data inside**. The following command
 copy the stream `0:3` from the file `GH010039.MP4` as raw, and stores it in `GH010039.bin`
 
 ```sh
@@ -214,6 +214,15 @@ please extract the raw data and send me them (see [extracting data](#extracting-
 * hero6 (only `GPSFIX!=0`) ![Fusion](doc/hero6_skip.png "Fusion")
 * karma ![Fusion](doc/karma.png "Fusion")
 * Gopro7 ![Gopro7](doc/gopro7.png "Gopro7")
+
+## Test harnesses
+
+[Pytest](https://docs.pytest.org/) test harnesses exist in the `test` directory. With pytest installed, These can be run by using the following
+command in the top-level project directory:
+```sh
+pytest
+```
+
 # Status and future work
 
 Currently, `gopro2gpx` generates *hard-formatted* `kml`, and a useful `gpx` file. But:
