@@ -3,7 +3,7 @@ import os
 
 class Args(object):
     def __init__(self):
-        self.binary = True
+        self.binary = False
         self.skip = False
         self.verbose = 0
         self.files = []
@@ -35,11 +35,12 @@ def test_sample_set():
         args = Args()
         args.files = [samples_dir + sample_bin]
         args.outputfile = dir_path + output_file_prefix
+        args.binary = True
         args.verbose = 2
 
         expected_filename = samples_dir + sample_gpx
         result_gpx_filename = dir_path + output_file_prefix + '.gpx'
-        result_bin_filename = dir_path + output_file_prefix + '.00.bin'
+        result_bin_filename = dir_path + output_file_prefix + '.raw'
 
         gopro2gpx.main_core(args)
 
