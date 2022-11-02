@@ -143,8 +143,7 @@ def parseArgs():
 
     return args
 
-def main():
-    args = parseArgs()
+def main_core(args):
     config = setup_environment(args)
     points = []
     start_time = None
@@ -179,6 +178,10 @@ def main():
     gpx = gpshelper.generate_GPX(points, start_time, trk_name="gopro7-track")
     with open("%s.gpx" % args.outputfile , "w+") as fd:
         fd.write(gpx)
+
+def main():
+    args = parseArgs()
+    main_core(args)
 
 if __name__ == "__main__":
     main()
