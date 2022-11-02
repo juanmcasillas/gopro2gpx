@@ -35,14 +35,15 @@ My idea is process the file in python, extract the data, and build a file in a k
 # Installation
 
 1. Package installation: there are two ways to install the package:
+
    a) Install via pip (with git installed):
-   
+
    ```
    pip install git+https://github.com/juanmcasillas/gopro2gpx
    ```
-   
+
    b) *Or* Download the repository, unpack it and instal with
-   
+
    ```
    python setup.py install
    ```
@@ -50,14 +51,14 @@ My idea is process the file in python, extract the data, and build a file in a k
 2. Ensure you have **FFmpeg** and **FFprobe** installed in your system.
 
 3. If ffmpeg is not installed in a `PATH` location, the path can be specified in the config file.
-   
+
    The configuration file is located in:
-   
+
    - Windows: `%APPDATA%\gopro2gpx\gopro2gpx.conf`
    - Unix (Linux, Mac): `$HOME/.config/gopro2gpx.conf` (`$XDG_CONFIG_HOME/gopro2gpx.conf` to be exact)
-   
+
    The configuration file has to look like this:
-   
+
    ```
    [ffmpeg]
    ffmpeg = /path/to/ffmpeg
@@ -65,27 +66,27 @@ My idea is process the file in python, extract the data, and build a file in a k
    ```
 
 4. The script can then be invoked with
-   
+
    ```shell
    gopro2gpx
    ```
-   
+
    or
-   
+
    ```shell
    python3 -m gopro2gpx
    ```
-   
+
    (exchange `python3` with your specific python installation)
-   
+
    E.g. to run it on the example data (skip bad points, show the labels debug, create `hero6.kml` and `hero6.gpx` files):
-   
+
    ```shell
    gopro2gpx -s -vvv samples/hero6.mp4 hero6
    ```
 
 5. With custom path for FFMPEG
-   
+
    ```
    export PATH=$PATH:/usr/local/opt/ffmpeg/bin
    gopro2gpx -vvv samples/8/GH010159.MP4 output.bin
