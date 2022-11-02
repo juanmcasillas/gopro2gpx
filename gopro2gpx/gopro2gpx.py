@@ -21,6 +21,7 @@ from collections import namedtuple
 from datetime import datetime
 
 from .config import setup_environment
+from .ffmpegtools import FFMpegTools
 from . import fourCC
 from . import gpmf
 from . import gpshelper
@@ -147,13 +148,14 @@ def main():
     config = setup_environment(args)
     points = []
     start_time = None
-    for member in config.files:
-        parser = gpmf.Parser(config)
+    ffmpegtools = FFMpegTools(ffprobe=config.ffprobe_cmd, ffmpeg=config.ffmpeg_cmd)
+    for filename in args.files:
+        parser = gpmf.Parser(config, ffmpegtools)
 
         if not args.binary:
-            data = parser.readFromMP4(member)
+            data = parser.readFromMP4(filename)
         else:
-            data = parser.readFromBinary(member)
+            data = parser.readFromBinary(filename)
 
         # build some funky tracks from camera GPS
 
