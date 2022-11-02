@@ -217,7 +217,7 @@ please extract the raw data and send me them (see [extracting data](#extracting-
 
 ## Test harnesses
 
-[Pytest](https://docs.pytest.org/) test harnesses exist in the `test` directory. With pytest installed, These can be run by using the following
+[Pytest](https://docs.pytest.org/) test harnesses exist in the `test` directory. With pytest installed, these can be run by using the following
 command in the top-level project directory:
 ```sh
 pytest
