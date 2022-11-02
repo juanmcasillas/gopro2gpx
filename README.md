@@ -36,46 +36,60 @@ My idea is process the file in python, extract the data, and build a file in a k
 
 1. Package installation: there are two ways to install the package:
    a) Install via pip (with git installed):
-```
-pip install git+https://github.com/juanmcasillas/gopro2gpx
-```
+   
+   ```
+   pip install git+https://github.com/juanmcasillas/gopro2gpx
+   ```
+   
    b) *Or* Download the repository, unpack it and instal with
-```
-python setup.py install
-```
-2. Ensure you have **FFmpeg** and **FFprobe** installed in your system.
-3. If ffmpeg is not installed in a `PATH` location, the path can be specified in the config file.
+   
+   ```
+   python setup.py install
+   ```
 
+2. Ensure you have **FFmpeg** and **FFprobe** installed in your system.
+
+3. If ffmpeg is not installed in a `PATH` location, the path can be specified in the config file.
+   
    The configuration file is located in:
+   
    - Windows: `%APPDATA%\gopro2gpx\gopro2gpx.conf`
    - Unix (Linux, Mac): `$HOME/.config/gopro2gpx.conf` (`$XDG_CONFIG_HOME/gopro2gpx.conf` to be exact)
-
+   
    The configuration file has to look like this:
-```
-[ffmpeg]
-ffmpeg = /path/to/ffmpeg
-ffprobe = /path/to/ffprobe
-```
- 4. The script can then be invoced with
- ```shell
- gopro2gpx
- ```
- or
- ```shell
- python3 -m gopro2gpx
- ```
- (exchange `python3` with your specific python installation)
+   
+   ```
+   [ffmpeg]
+   ffmpeg = /path/to/ffmpeg
+   ffprobe = /path/to/ffprobe
+   ```
 
- E.g. to run it on the example data (skip bad points, show the labels debug, create `hero6.kml` and `hero6.gpx` files):
+4. The script can then be invoked with
+   
+   ```shell
+   gopro2gpx
+   ```
+   
+   or
+   
+   ```shell
+   python3 -m gopro2gpx
+   ```
+   
+   (exchange `python3` with your specific python installation)
+   
+   E.g. to run it on the example data (skip bad points, show the labels debug, create `hero6.kml` and `hero6.gpx` files):
+   
+   ```shell
+   gopro2gpx -s -vvv samples/hero6.mp4 hero6
+   ```
 
-```shell
-gopro2gpx -s -vvv samples/hero6.mp4 hero6
-```
 5. With custom path for FFMPEG
-```
-export PATH=$PATH:/usr/local/opt/ffmpeg/bin
-gopro2gpx -vvv samples/8/GH010159.MP4 output.bin
-```
+   
+   ```
+   export PATH=$PATH:/usr/local/opt/ffmpeg/bin
+   gopro2gpx -vvv samples/8/GH010159.MP4 output.bin
+   ```
 
 # Arguments and options
 
@@ -96,7 +110,11 @@ optional arguments:
 
 * `file`: Gopro MP4 file or binary file with the gpmd dump.
 * `outputfile`: Dump the GPS info into `outputfile.kml` and `outputfile.gpx`. Don't use extension.
-* `-v`, `-vv`, `-vvv`: Verbose mode. First show some info, second dumps the `gpmd` track info a file called `outputfile.bin` and third (`-vvv`) shows the labels.
+* `-v`, `-vv`, `-vvv`: Verbose mode.
+  * Level 1 (`-v`) - show addition info
+  * Level 2 (`-vv`) - dumps the `gpmd` track info files called `<outputfile>.XX.bin`
+    * Here `XX` is an integer: `00`, `01`, `02`, etc, indicating this binary is from the zero offset n-th input file
+  * Level 3 (`-vvv`) - shows the low-level parsing label data
 * `-b`: read the data from a binary dump fo the gpmd track istead of the MP4 video. Useful for testing, so I don't need to move big MP4 files.
 * `-s`: skip "bad" GPS points. When `GPSFIX=0` (no GPS satellite signal received) GPS data is unacurrate. Ignore these points.
 
@@ -109,6 +127,7 @@ Follow these steps:
 3. Use the camera in the Frame mount and not the Super Suit (it will work in the Super Suit but might have a weaker signal)
 
 Read the following thread for more info:
+
 * [GOPRO Forum](https://community.gopro.com/t5/GoPro-Apps-for-Desktop/GPS-data-all-wrong/td-p/200091?profile.language=es)
 
 # Technical info
@@ -219,6 +238,7 @@ please extract the raw data and send me them (see [extracting data](#extracting-
 
 [Pytest](https://docs.pytest.org/) test harnesses exist in the `test` directory. With pytest installed, these can be run by using the following
 command in the top-level project directory:
+
 ```sh
 pytest
 ```
@@ -232,6 +252,3 @@ Currently, `gopro2gpx` generates *hard-formatted* `kml`, and a useful `gpx` file
 - Karma drone GPS info has been infered from debug. Maybe the `SYST` label is parsed wrong.
 - `UNIT` labels are parsed hardcoded.
 - Need `ffmpeg` and `ffprobe` to extract the data.
-
-
-
