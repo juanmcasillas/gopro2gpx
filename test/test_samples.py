@@ -41,7 +41,7 @@ def test_sample_set():
 
         expected_filename = samples_dir + sample_gpx
         result_gpx_filename = dir_path + output_file_prefix + '.gpx'
-        result_bin_filename = dir_path + output_file_prefix + '.raw'
+        result_bin_filename = dir_path + output_file_prefix + '.00.bin'
 
         gopro2gpx.main_core(args)
 
