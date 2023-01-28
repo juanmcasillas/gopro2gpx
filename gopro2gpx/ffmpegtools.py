@@ -37,15 +37,45 @@ class FFMpegTools:
         if self.version.major >= 4:
             self.use_json_format = True
 
+    def to_int(self, v):
+        r = v
+        try:
+            r = int(v)
+        except:
+            pass
+        return r
+
     def getVersion(self):
         output = self.runCmdRaw(self.ffmpeg, ['-version'])
         version_info = output.decode('utf-8')
-        version_info_reg = re.compile('ffmpeg version (\d+)\.(\d+)\.(\d+)', flags=re.I)
+        
+        version_info_reg = re.compile('ffmpeg version ([a-zA-Z0-9\.-]+)', flags=re.I)
         m = version_info_reg.search(version_info)
-        if m and len(m.groups()) == 3:
-            major = int(m.group(1))
-            medium = int(m.group(2))
-            minor = int(m.group(3))
+        if m and len(m.groups()) == 1:
+            #
+            # manage old format, and new formats here. Examples
+            #
+            # ffmpeg version N-109674-gc0bc804e55-20230127 Copyright (c) 2000-2023 the FFmpeg developers
+            # Version(major=109674, medium='gc0bc804e55', minor=20230127)
+            # ffmpeg version 2023-01-25-git-2c3107c3e9-essentials_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers
+            # Version(major=2023, medium=1, minor=25)
+            #
+
+            data = m.groups(1)[0]
+            
+
+            values_reg = re.compile('(N-)?([a-zA-Z0-9]+)[\.-]([a-zA-Z0-9]+)[\.-]([a-zA-Z0-9]+)', flags=re.I)
+            m = values_reg.search(data)
+            if m:
+                n_value = m.group(1)
+                major = self.to_int(m.group(2))
+                medium = self.to_int(m.group(3))
+                minor = self.to_int(m.group(4))
+            else:
+                major = 0
+                medium = 0
+                minor = 0
+         
         return Version(major, medium, minor)
 
     def runCmd(self, cmd, args):
