@@ -1,5 +1,19 @@
 # Updates
 
+* Added support for "new" and "old" version strings for `ffmpeg`:
+
+```python
+#
+# manage old format, and new formats here. Examples
+#
+# ffmpeg version N-109674-gc0bc804e55-20230127 Copyright (c) 2000-2023 the FFmpeg developers
+# Version(major=109674, medium='gc0bc804e55', minor=20230127)
+# ffmpeg version 2023-01-25-git-2c3107c3e9-essentials_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers
+# Version(major=2023, medium=1, minor=25)
+#
+```
+
+
 * Added support for legacy versions of ffmpeg. If ffmpeg version is lower than 4.4 use the standard output format; else, uses the json format (contributed by [alycda](https://github.com/juanmcasillas/gopro2gpx/issues/13#issuecomment-832080667)).
 * Fixed regexp to support new formats (contributed by [sbwilli3](https://github.com/juanmcasillas/gopro2gpx/issues/13#issuecomment-1136660302))
 * Added label 'FSKP' (contributed by [designer2k2](https://github.com/juanmcasillas/gopro2gpx/issues/20#issue-942464545))
