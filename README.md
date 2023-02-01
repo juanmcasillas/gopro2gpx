@@ -96,7 +96,7 @@ optional arguments:
 
 * `file`: Gopro MP4 file or binary file with the gpmd dump.
 * `outputfile`: Dump the GPS info into `outputfile.kml` and `outputfile.gpx`. Don't use extension.
-* `-v`, `-vv`, `-vvv`: Verbose mode. First show some info, second dumps the `gpmd` track info a file called `outputfile.bin` and third (`-vvv`) shows the labels.
+* `-v`, `-vv`, `-vvv`: Verbose mode. First show some info, second dumps the `gpmd` track info a file called `<outputfile>.bin` and third (`-vvv`) shows the labels.
 * `-b`: read the data from a binary dump fo the gpmd track istead of the MP4 video. Useful for testing, so I don't need to move big MP4 files.
 * `-s`: skip "bad" GPS points. When `GPSFIX=0` (no GPS satellite signal received) GPS data is unacurrate. Ignore these points.
 
