@@ -168,7 +168,8 @@ class FFMpegTools:
 
         if not stream:
             return None, None
-        info_string = 'Stream {}[{}], {} ({})'.format(stream['index'], stream['id'], stream['codec_name'], stream['codec_tag_string'])
+        
+        info_string = 'Stream {}[{}], {} ({})'.format(stream['index'], stream['index'], stream['codec_name'], stream['codec_tag_string'])
         return int(stream["index"]), info_string
 
     def _getMetadataTrackFromText(self, fname):

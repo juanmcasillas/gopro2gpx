@@ -1,5 +1,6 @@
 # Updates
 
+* Fixed a problem in stream['id'] using stream['index'] instead. Thanks to (hdnh2006)[https://github.com/hdnh2006] for spot the problem.
 * Added support for "new" and "old" version strings for `ffmpeg`:
 
 ```python
