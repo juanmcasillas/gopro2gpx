@@ -17,104 +17,76 @@ import os
 import struct
 import sys
 
-from .ffmpegtools import FFMpegTools
 from .klvdata import KLVData
 
 
-class Parser:
-    def __init__(self, config):
-        self.config = config
-        self.ffmtools = FFMpegTools(self.config)
-
-        # map some handy shortcuts
-        self.verbose = config.verbose
-        self.file = config.file
-        self.outputfile = config.outputfile
+class GpmfFileReader:
+    def __init__(self, ffmpegtools, verbose=0):
+        self.verbose = verbose
+        self.ffmtools = ffmpegtools
 
 
-    def readFromMP4(self):
+    def readRawTelemetryFromMP4(self, filename):
         """read data the metadata track from video. Requires FFMPEG wrapper.
-           -vv creates a dump file with the  binary data called dump_track.bin
         """
 
-        if not os.path.exists(self.file):
-            raise FileNotFoundError("Can't open %s" % self.file)
+        if not os.path.exists(filename):
+            raise FileNotFoundError("Can't open %s" % filename)
 
-        if not self.config.use_json_format:
-            track_number, lineinfo = self.ffmtools.getMetadataTrack(self.file)
-        else:
-            track_number, stream = self.ffmtools.getMetadataTrackFromJSON(self.file)
+        track_number, info = self.ffmtools.getMetadataTrack(filename)
         if not track_number:
-            raise Exception("File %s doesn't have any metadata" % self.file)
+            raise Exception("File %s doesn't have any metadata" % filename)
 
         if self.verbose:
-            try:
-                print("Working on file %s track %s (%s)" % (self.file, track_number, stream))
-            except UnboundLocalError:
-                print("Working on file %s track %s (%s)" % (self.file, track_number, lineinfo))
-        metadata_raw = self.ffmtools.getMetadata(track_number, self.file)
+            print("Working on file %s track %s (%s)" % (filename, track_number, info))
 
-        if self.verbose == 2:
-            print("Creating output file for binary data (fromMP4): %s" % self.outputfile)
-            f = open("%s.bin" % self.outputfile, "wb")
-            f.write(metadata_raw)
-            f.close()
+        metadata_raw = self.ffmtools.getMetadata(track_number, filename)
 
-        # process the data here
-        metadata = self.parseStream(metadata_raw)
-        return(metadata)
+        return metadata_raw
 
-    def readFromBinary(self):
+    def readRawTelemetryFromBinary(self, filename):
         """read data from binary file, instead extract the metadata track from video. Useful for quick development
-           -vv creates a dump file with the  binary data called dump_binary.raw
         """
-        if not os.path.exists(self.file):
-            raise FileNotFoundError("Can't open %s" % self.file)
+        if not os.path.exists(filename):
+            raise FileNotFoundError("Can't open %s" % filename)
 
         if self.verbose:
-            print("Reading binary file %s" % (self.file))
+            print("Reading binary file %s" % filename)
 
-        fd = open(self.file, 'rb')
-        data = fd.read()
+        fd = open(filename, 'rb')
+        metadata_raw = fd.read()
         fd.close()
 
-        if self.verbose == 2:
-            print("Creating output file for binary data (from binary): %s" % self.outputfile)
-            f = open("%s.raw" % self.outputfile, "wb")
-            f.write(data)
-            f.close()
+        return metadata_raw
 
-        # process the data here
-        metadata = self.parseStream(data)
-        return metadata
 
-    def parseStream(self, data_raw):
-        """
-        main code that reads the points
-        """
-        data = array.array('b')
-        data.frombytes(data_raw)
+def parseStream(data_raw, verbose=0):
+    """
+    main code that reads the points
+    """
+    data = array.array('b')
+    data.frombytes(data_raw)
 
-        offset = 0
-        klvlist = []
+    offset = 0
+    klvlist = []
 
-        while offset < len(data):
+    while offset < len(data):
 
-            klv = KLVData(data,offset)
-            if not klv.skip():
-                klvlist.append(klv)
-                if self.verbose == 3:
-                    print(klv)
+        klv = KLVData(data,offset)
+        if not klv.skip():
+            klvlist.append(klv)
+            if verbose == 3:
+                print(klv)
+        else:
+            if klv:
+                print("Warning, skipping klv", klv)
             else:
-                if klv: 
-                    print("Warning, skipping klv", klv)
-                else:
-                    # unknown label
-                    pass
-                    
-            offset += 8
-            if klv.type != 0:
-                offset += klv.padded_length
-                #print(">offset:%d length:%d padded:%d" % (offset, length, padded_length))
+                # unknown label
+                pass
 
-        return(klvlist)
+        offset += 8
+        if klv.type != 0:
+            offset += klv.padded_length
+            #print(">offset:%d length:%d padded:%d" % (offset, length, padded_length))
+
+    return(klvlist)

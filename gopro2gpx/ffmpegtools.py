@@ -1,5 +1,5 @@
 #
-# 17/02/2019 
+# 17/02/2019
 # Juan M. Casillas <juanm.casillas@gmail.com>
 # https://github.com/juanmcasillas/gopro2gpx.git
 #
@@ -9,11 +9,74 @@
 import subprocess
 import re
 import json
+import platform
+from collections import namedtuple
+
+Version = namedtuple('Version', ['major', 'medium', 'minor'])
+
+def default_fftools():
+    if platform.system() == 'Windows':
+        ffmpeg, ffprobe = "ffmpeg.exe", "ffprobe.exe"
+    else:
+        ffmpeg, ffprobe = "ffmpeg", "ffprobe"
+
+    return ffmpeg, ffprobe
+
 
 class FFMpegTools:
 
-    def __init__(self, config):
-        self.config = config
+    def __init__(self, ffprobe=None, ffmpeg=None):
+        default_ffmpeg, default_ffprobe = default_fftools()
+
+        self.ffmpeg = ffmpeg if ffmpeg else default_ffmpeg
+        self.ffprobe = ffprobe if ffprobe else default_ffprobe
+
+        self.version = self.getVersion()
+
+        self.use_json_format = False
+        if self.version.major >= 4:
+            self.use_json_format = True
+
+    def to_int(self, v):
+        r = v
+        try:
+            r = int(v)
+        except:
+            pass
+        return r
+
+    def getVersion(self):
+        output = self.runCmdRaw(self.ffmpeg, ['-version'])
+        version_info = output.decode('utf-8')
+        
+        version_info_reg = re.compile('ffmpeg version ([a-zA-Z0-9\.-]+)', flags=re.I)
+        m = version_info_reg.search(version_info)
+        if m and len(m.groups()) == 1:
+            #
+            # manage old format, and new formats here. Examples
+            #
+            # ffmpeg version N-109674-gc0bc804e55-20230127 Copyright (c) 2000-2023 the FFmpeg developers
+            # Version(major=109674, medium='gc0bc804e55', minor=20230127)
+            # ffmpeg version 2023-01-25-git-2c3107c3e9-essentials_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers
+            # Version(major=2023, medium=1, minor=25)
+            #
+
+            data = m.groups(1)[0]
+            
+
+            values_reg = re.compile('(N-)?([a-zA-Z0-9]+)[\.-]([a-zA-Z0-9]+)[\.-]([a-zA-Z0-9]+)', flags=re.I)
+            m = values_reg.search(data)
+            if m:
+                n_value = m.group(1)
+                major = self.to_int(m.group(2))
+                medium = self.to_int(m.group(3))
+                minor = self.to_int(m.group(4))
+            else:
+                major = 0
+                medium = 0
+                minor = 0
+         
+        return Version(major, medium, minor)
 
     def runCmd(self, cmd, args):
         result = subprocess.run([ cmd ] + args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -25,9 +88,15 @@ class FFMpegTools:
         output = result.stdout
         return output
 
-    def getMetadataTrackFromJSON(self, fname):
-        """ 
-            % ffprobe -print_format json -show_streams video.mp4 
+    def getMetadataTrack(self, fname):
+        if self.use_json_format:
+            return self._getMetadataTrackFromJSON(fname)
+        else:
+            return self._getMetadataTrackFromText(fname)
+
+    def _getMetadataTrackFromJSON(self, fname):
+        """
+            % ffprobe -print_format json -show_streams video.mp4
             % ffprobe -v quiet -print_format json -show_format -show_streams video.mp4"
 
             {
@@ -94,14 +163,15 @@ class FFMpegTools:
         """
         args = ['-print_format', 'json', '-show_streams', fname]
 
-        md = json.loads(self.runCmdRaw(self.config.ffprobe_cmd, args))
+        md = json.loads(self.runCmdRaw(self.ffprobe, args))
         stream = next((stream for stream in md['streams'] if stream['codec_tag_string'] == 'gpmd'), None)
 
         if not stream:
-            return(None)
-        return(int(stream["index"]), stream)
+            return None, None
+        info_string = 'Stream {}[{}], {} ({})'.format(stream['index'], stream['id'], stream['codec_name'], stream['codec_tag_string'])
+        return int(stream["index"]), info_string
 
-    def getMetadataTrack(self, fname):
+    def _getMetadataTrackFromText(self, fname):
         """
         % ffprobe GH010039.MP4 2>&1
 
@@ -113,22 +183,22 @@ class FFMpegTools:
             Stream #0:2(eng): Data: none (tmcd / 0x64636D74), 0 kb/s (default)
             Stream #0:3(eng): Data: none (gpmd / 0x646D7067), 29 kb/s (default)
             Stream #0:4(eng): Data: none (fdsc / 0x63736466), 12 kb/s (default)
-        """      
-        output = self.runCmd(self.config.ffprobe_cmd, [fname])
+        """
+        output = self.runCmd(self.ffprobe, [fname])
         # Stream #0:3(eng): Data: bin_data (gpmd / 0x646D7067), 29 kb/s (default)
         # Stream #0:2(eng): Data: none (gpmd / 0x646D7067), 29 kb/s (default)
         # Stream #0:3[0x4](eng): Data: bin_data (gpmd
         reg = re.compile('Stream #\d:(\d)(?:\[0x\d+\])?\(.+\): Data: \w+ \(gpmd', flags=re.I|re.M)
-        
+
         m = reg.search(output)
-        
+
         if not m:
-            return(None)
-        return(int(m.group(1)), m.group(0))
+            return None, None
+        return int(m.group(1)), m.group(0)
 
     def getMetadata(self, track, fname):
 
         output_file = "-"
-        args = [ '-y', '-i', fname, '-codec', 'copy', '-map', '0:%d' % track, '-f', 'rawvideo', output_file ] 
-        output = self.runCmdRaw(self.config.ffmpeg_cmd, args)
+        args = [ '-y', '-i', fname, '-codec', 'copy', '-map', '0:%d' % track, '-f', 'rawvideo', output_file ]
+        output = self.runCmdRaw(self.ffmpeg, args)
         return(output)

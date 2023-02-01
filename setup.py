@@ -7,6 +7,6 @@ setup(
     version = "0.1",
     packages = ['gopro2gpx'],
     entry_points = {
-        'console_scripts': ['gopro2gpx = gopro2gpx.__main__:main']
+        'console_scripts': ['gopro2gpx = gopro2gpx.gopro2gpx:main']
     }
 )

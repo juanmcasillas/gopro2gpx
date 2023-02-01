@@ -1,18 +1,32 @@
 # Updates
 
+* Added support for "new" and "old" version strings for `ffmpeg`:
+
+```python
+#
+# manage old format, and new formats here. Examples
+#
+# ffmpeg version N-109674-gc0bc804e55-20230127 Copyright (c) 2000-2023 the FFmpeg developers
+# Version(major=109674, medium='gc0bc804e55', minor=20230127)
+# ffmpeg version 2023-01-25-git-2c3107c3e9-essentials_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers
+# Version(major=2023, medium=1, minor=25)
+#
+```
+
+
 * Added support for legacy versions of ffmpeg. If ffmpeg version is lower than 4.4 use the standard output format; else, uses the json format (contributed by [alycda](https://github.com/juanmcasillas/gopro2gpx/issues/13#issuecomment-832080667)).
 * Fixed regexp to support new formats (contributed by [sbwilli3](https://github.com/juanmcasillas/gopro2gpx/issues/13#issuecomment-1136660302))
 * Added label 'FSKP' (contributed by [designer2k2](https://github.com/juanmcasillas/gopro2gpx/issues/20#issue-942464545))
 
 # About gopro2gpx
 
-Python script that parses the gpmd stream for GOPRO moov track (MP4) and extract the GPS info into a GPX (and kml) file.  
+Python script that parses the gpmd stream for GOPRO moov track (MP4) and extract the GPS info into a GPX (and kml) file.
 
-Tested on a GoPro7, but it should work on any camera above the GoPro5.  
+Tested on a GoPro7, but it should work on any camera above the GoPro5.
 
-Tested on Windows7 and MacOS Sierra. 
+Tested on Windows7 and MacOS Sierra.
 
-I always like to print some additional info overlaying my action videos. These overlays will show data about speed, elevation, 
+I always like to print some additional info overlaying my action videos. These overlays will show data about speed, elevation,
 gps info, and so on. I started a project wrotten on python 2.7 that works fine. gets a `gpx` track file, a `mp4` file and some
 configuration, and builds an overlay with the data:
 
@@ -35,47 +49,62 @@ My idea is process the file in python, extract the data, and build a file in a k
 # Installation
 
 1. Package installation: there are two ways to install the package:
+
    a) Install via pip (with git installed):
-```
-pip install git+https://github.com/juanmcasillas/gopro2gpx
-```
+
+   ```
+   pip install git+https://github.com/juanmcasillas/gopro2gpx
+   ```
+
    b) *Or* Download the repository, unpack it and instal with
-```
-python setup.py install
-```
+
+   ```
+   python setup.py install
+   ```
+
 2. Ensure you have **FFmpeg** and **FFprobe** installed in your system.
+
 3. If ffmpeg is not installed in a `PATH` location, the path can be specified in the config file.
 
    The configuration file is located in:
+
    - Windows: `%APPDATA%\gopro2gpx\gopro2gpx.conf`
    - Unix (Linux, Mac): `$HOME/.config/gopro2gpx.conf` (`$XDG_CONFIG_HOME/gopro2gpx.conf` to be exact)
 
    The configuration file has to look like this:
-```
-[ffmpeg]
-ffmpeg = /path/to/ffmpeg
-ffprobe = /path/to/ffprobe
-```
- 4. The script can then be invoced with
- ```shell
- gopro2gpx
- ```
- or
- ```shell
- python3 -m gopro2gpx
- ```
- (exchange `python3` with your specific python installation)
 
- E.g. to run it on the example data (skip bad points, show the labels debug, create `hero6.kml` and `hero6.gpx` files):
+   ```
+   [ffmpeg]
+   ffmpeg = /path/to/ffmpeg
+   ffprobe = /path/to/ffprobe
+   ```
 
-```shell
-gopro2gpx -s -vvv samples/hero6.mp4 hero6
-```
+4. The script can then be invoked with
+
+   ```shell
+   gopro2gpx
+   ```
+
+   or
+
+   ```shell
+   python3 -m gopro2gpx
+   ```
+
+   (exchange `python3` with your specific python installation)
+
+   E.g. to run it on the example data (skip bad points, show the labels debug, create `hero6.kml` and `hero6.gpx` files):
+
+   ```shell
+   gopro2gpx -s -vvv samples/hero6.mp4 hero6
+   ```
+
 5. With custom path for FFMPEG
-```
-export PATH=$PATH:/usr/local/opt/ffmpeg/bin
-gopro2gpx -vvv samples/8/GH010159.MP4 output.bin
-```
+
+   ```
+   export PATH=$PATH:/usr/local/opt/ffmpeg/bin
+   gopro2gpx -vvv samples/8/GH010159.MP4 output.bin
+   ```
 
 # Arguments and options
 
@@ -92,11 +121,15 @@ optional arguments:
   -v, --verbose  increase output verbosity
   -b, --binary   read data from bin file
   -s, --skip     Skip bad points (GPSFIX=0)
-```  
+```
 
 * `file`: Gopro MP4 file or binary file with the gpmd dump.
 * `outputfile`: Dump the GPS info into `outputfile.kml` and `outputfile.gpx`. Don't use extension.
-* `-v`, `-vv`, `-vvv`: Verbose mode. First show some info, second dumps the `gpmd` track info a file called `<outputfile>.bin` and third (`-vvv`) shows the labels.
+* `-v`, `-vv`, `-vvv`: Verbose mode.
+  * Level 1 (`-v`) - show addition info
+  * Level 2 (`-vv`) - dumps the `gpmd` track info files called `<outputfile>.XX.bin`
+    * Here `XX` is an integer: `00`, `01`, `02`, etc, indicating this binary is from the zero offset n-th input file
+  * Level 3 (`-vvv`) - shows the low-level parsing label data
 * `-b`: read the data from a binary dump fo the gpmd track istead of the MP4 video. Useful for testing, so I don't need to move big MP4 files.
 * `-s`: skip "bad" GPS points. When `GPSFIX=0` (no GPS satellite signal received) GPS data is unacurrate. Ignore these points.
 
@@ -109,6 +142,7 @@ Follow these steps:
 3. Use the camera in the Frame mount and not the Super Suit (it will work in the Super Suit but might have a weaker signal)
 
 Read the following thread for more info:
+
 * [GOPRO Forum](https://community.gopro.com/t5/GoPro-Apps-for-Desktop/GPS-data-all-wrong/td-p/200091?profile.language=es)
 
 # Technical info
@@ -129,31 +163,31 @@ automatically, but here is the output from `ffprobe`:
         compatible_brands: mp41
         creation_time   : 2019-02-10 10:59:19
     Duration: 00:00:21.80, start: 0.000000, bitrate: 60420 kb/s
-        Stream #0:0(eng): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt709), 2704x1520 [SAR 1:1 DAR 169:95], 
+        Stream #0:0(eng): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt709), 2704x1520 [SAR 1:1 DAR 169:95],
         60173 kb/s, 50 fps, 50 tbr, 90k tbn, 100 tbc (default)
         Metadata:
         creation_time   : 2019-02-10 10:59:19
-        handler_name    : GoPro AVC  
+        handler_name    : GoPro AVC
         encoder         : GoPro AVC encoder
         timecode        : 10:59:19:31
         Stream #0:1(eng): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 189 kb/s (default)
         Metadata:
         creation_time   : 2019-02-10 10:59:19
-        handler_name    : GoPro AAC  
+        handler_name    : GoPro AAC
         timecode        : 10:59:19:31
         Stream #0:2(eng): Data: none (tmcd / 0x64636D74), 0 kb/s (default)
         Metadata:
         creation_time   : 2019-02-10 10:59:19
-        handler_name    : GoPro TCD  
+        handler_name    : GoPro TCD
         timecode        : 10:59:19:31
         Stream #0:3(eng): Data: none (gpmd / 0x646D7067), 29 kb/s (default)
         Metadata:
         creation_time   : 2019-02-10 10:59:19
-        handler_name    : GoPro MET  
+        handler_name    : GoPro MET
         Stream #0:4(eng): Data: none (fdsc / 0x63736466), 12 kb/s (default)
         Metadata:
         creation_time   : 2019-02-10 10:59:19
-        handler_name    : GoPro SOS  
+        handler_name    : GoPro SOS
 ```
 
 We need the stream called in this clase, `#0:3(eng)` that is, the `0:3` stream:
@@ -163,13 +197,13 @@ We need the stream called in this clase, `#0:3(eng)` that is, the `0:3` stream:
         Stream #0:3(eng): Data: none (gpmd / 0x646D7067), 29 kb/s (default)
         Metadata:
         creation_time   : 2019-02-10 10:59:19
-        handler_name    : GoPro MET  
-        [...]        
+        handler_name    : GoPro MET
+        [...]
 ```
 
 # Extracting the binary GPS data from MP4
 
-With this data, we can create a **binary file with the gpmd data inside**. The following command 
+With this data, we can create a **binary file with the gpmd data inside**. The following command
 copy the stream `0:3` from the file `GH010039.MP4` as raw, and stores it in `GH010039.bin`
 
 ```sh
@@ -214,6 +248,16 @@ please extract the raw data and send me them (see [extracting data](#extracting-
 * hero6 (only `GPSFIX!=0`) ![Fusion](doc/hero6_skip.png "Fusion")
 * karma ![Fusion](doc/karma.png "Fusion")
 * Gopro7 ![Gopro7](doc/gopro7.png "Gopro7")
+
+## Test harnesses
+
+[Pytest](https://docs.pytest.org/) test harnesses exist in the `test` directory. With pytest installed, these can be run by using the following
+command in the top-level project directory:
+
+```sh
+pytest
+```
+
 # Status and future work
 
 Currently, `gopro2gpx` generates *hard-formatted* `kml`, and a useful `gpx` file. But:
@@ -223,6 +267,3 @@ Currently, `gopro2gpx` generates *hard-formatted* `kml`, and a useful `gpx` file
 - Karma drone GPS info has been infered from debug. Maybe the `SYST` label is parsed wrong.
 - `UNIT` labels are parsed hardcoded.
 - Need `ffmpeg` and `ffprobe` to extract the data.
-
-
-
