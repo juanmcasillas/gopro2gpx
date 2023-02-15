@@ -44,7 +44,7 @@ class FFMpegTools:
         try:
             r = int(v)
         except:
-            pass
+            r = None
         return r
 
     def getVersion(self):
