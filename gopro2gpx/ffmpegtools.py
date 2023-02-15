@@ -24,8 +24,10 @@ def default_fftools():
 
 
 class FFMpegTools:
+    MAJOR_VERSION = 4
 
     def __init__(self, ffprobe=None, ffmpeg=None):
+        
         default_ffmpeg, default_ffprobe = default_fftools()
 
         self.ffmpeg = ffmpeg if ffmpeg else default_ffmpeg
@@ -34,7 +36,7 @@ class FFMpegTools:
         self.version = self.getVersion()
 
         self.use_json_format = False
-        if self.version.major >= 4:
+        if self.version.major >= FFMpegTools.MAJOR_VERSION:
             self.use_json_format = True
 
     def to_int(self, v):
@@ -55,10 +57,16 @@ class FFMpegTools:
             #
             # manage old format, and new formats here. Examples
             #
+            # ffmpeg version N-109745-g7d49fef8b4 Copyright (c) 2000-2023 the FFmpeg developers
+            # Version(major=4, medium=109745, minor=0)
             # ffmpeg version N-109674-gc0bc804e55-20230127 Copyright (c) 2000-2023 the FFmpeg developers
             # Version(major=109674, medium='gc0bc804e55', minor=20230127)
             # ffmpeg version 2023-01-25-git-2c3107c3e9-essentials_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers
             # Version(major=2023, medium=1, minor=25)
+            # ffmpeg version 4.3.1 Copyright (c) 2000-2020 the FFmpeg developers
+            # Version(major=4, medium=3, minor=1)
+            # ffmpeg version 2.1.3 Copyright (c) 2000-2020 the FFmpeg developers
+            # Version(major=2, medium=1, minor=3)
             #
 
             data = m.groups(1)[0]
@@ -67,10 +75,15 @@ class FFMpegTools:
             values_reg = re.compile('(N-)?([a-zA-Z0-9]+)[\.-]([a-zA-Z0-9]+)[\.-]([a-zA-Z0-9]+)', flags=re.I)
             m = values_reg.search(data)
             if m:
-                n_value = m.group(1)
+                #n_value = m.group(1)
                 major = self.to_int(m.group(2))
                 medium = self.to_int(m.group(3))
                 minor = self.to_int(m.group(4))
+                # correct versions
+                # if major is none, use >= 4 to support json format.
+                major  = FFMpegTools.MAJOR_VERSION if not major else major
+                medium = medium if medium else 0
+                minor  = minor  if minor else 0
             else:
                 major = 0
                 medium = 0

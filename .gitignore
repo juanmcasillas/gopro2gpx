@@ -22,3 +22,4 @@ share/python-wheels/
 *.egg
 MANIFEST
 samples/*.mp4
+test/parse.py
