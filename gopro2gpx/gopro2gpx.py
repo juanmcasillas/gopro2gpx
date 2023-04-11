@@ -18,7 +18,7 @@ import subprocess
 import sys
 import time
 from collections import namedtuple
-from datetime import datetime
+import datetime
 
 from .config import setup_environment
 from .ffmpegtools import FFMpegTools
@@ -52,10 +52,13 @@ def BuildGPSPoints(data, skip=False):
     }
 
     GPSFIX = 0 # no lock.
+    TSMP = 0
+    DVNM = "Unknown"
     for d in data:
-
         if d.fourCC == 'SCAL':
             SCAL = d.data
+        elif d.fourCC == "DVNM":
+            DVNM = d.data
         elif d.fourCC == 'GPSU':
             GPSU = d.data
             if start_time is None:
@@ -64,9 +67,19 @@ def BuildGPSPoints(data, skip=False):
             if d.data != GPSFIX:
                 print("GPSFIX change to %s [%s]" % (d.data,fourCC.LabelGPSF.xlate[d.data]))
             GPSFIX = d.data
+
+        elif d.fourCC == 'TSMP':
+            if TSMP == 0:
+                TSMP  = d.data
+            else:
+                TSMP = d.data - TSMP
+
         elif d.fourCC == 'GPS5':
             # we have to use the REPEAT value.
-
+            # gopro has a 18 Hz sample of writting the GPS5 value, so use it to compute delta
+            #print("len", len(d.data))
+            t_delta = 1/18.0
+            sample_count = 0
             for item in d.data:
 
                 if item.lon == item.lat == item.alt == 0:
@@ -85,9 +98,10 @@ def BuildGPSPoints(data, skip=False):
 
 
                 gpsdata = fourCC.GPSData._make(retdata)
-                p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, GPSU, gpsdata.speed)
+                p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, GPSU + datetime.timedelta(seconds= sample_count * t_delta), gpsdata.speed)
                 points.append(p)
                 stats['ok'] += 1
+                sample_count += 1
 
         elif d.fourCC == 'SYST':
             data = [ float(x) / float(y) for x,y in zip( d.data._asdict().values() ,list(SCAL) ) ]
@@ -114,10 +128,10 @@ def BuildGPSPoints(data, skip=False):
             gpsdata = fourCC.KARMAGPSData._make(data)
 
             if SYST.seconds != 0 and SYST.miliseconds != 0:
+                print("XX", SYST.miliseconds)
                 p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, datetime.fromtimestamp(SYST.miliseconds), gpsdata.speed)
                 points.append(p)
                 stats['ok'] += 1
-
 
 
 
@@ -125,12 +139,13 @@ def BuildGPSPoints(data, skip=False):
     total_points =0
     for i in stats.keys():
         total_points += stats[i]
+    print("Device: %s" % DVNM)
     print("- Ok:              %5d" % stats['ok'])
     print("- GPSFIX=0 (bad):  %5d (skipped: %d)" % (stats['badfix'], stats['badfixskip']))
     print("- Empty (No data): %5d" % stats['empty'])
     print("Total points:      %5d" % total_points)
     print("--------------------------")
-    return(points, start_time)
+    return(points, start_time, DVNM)
 
 def parseArgs():
     parser = argparse.ArgumentParser()
@@ -168,7 +183,7 @@ def main_core(args):
 
         data += gpmf.parseStream(raw_data, config.verbose)
 
-    points, start_time = BuildGPSPoints(data, skip=args.skip)
+    points, start_time, device_name = BuildGPSPoints(data, skip=args.skip)
 
     if len(points) == 0:
         print("Can't create file. No GPS info in %s. Exitting" % args.files)
@@ -182,7 +197,7 @@ def main_core(args):
     #with open("%s.csv" % args.outputfile , "w+") as fd:
     #    fd.write(csv)
 
-    gpx = gpshelper.generate_GPX(points, start_time, trk_name="gopro7-track")
+    gpx = gpshelper.generate_GPX(points, start_time, trk_name=device_name)
     with open("%s.gpx" % args.outputfile , "w+") as fd:
         fd.write(gpx)
 
