@@ -189,9 +189,9 @@ def main_core(args):
         print("Can't create file. No GPS info in %s. Exitting" % args.files)
         sys.exit(0)
 
-    #kml = gpshelper.generate_KML(points)
-    #with open("%s.kml" % args.outputfile , "w+") as fd:
-    #    fd.write(kml)
+    kml = gpshelper.generate_KML(points)
+    with open("%s.kml" % args.outputfile , "w+") as fd:
+        fd.write(kml)
 
     #csv = gpshelper.generate_CSV(points)
     #with open("%s.csv" % args.outputfile , "w+") as fd:
