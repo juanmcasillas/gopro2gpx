@@ -36,6 +36,7 @@ def BuildGPSPoints(data, skip=False):
      - GPSF     GPS Fix
      - GPSU     GPS Time
      - GPS5     GPS Data
+     - GPSP     GPS Precision
     """
 
     points = []
@@ -51,6 +52,18 @@ def BuildGPSPoints(data, skip=False):
         'empty' : 0
     }
 
+    # GPSP is 100x DoP 
+    # https://en.wikipedia.org/wiki/Dilution_of_precision_(navigation)
+    # Default value is 9999 (no lock). GoPro say that under 500 is good.
+    # Wikipedia indicates: 
+    #   Ideal: <100
+    #   Excellent: 100-200
+    #   Good: 200-500
+    #   Moderate: 500-1000
+    #   Fair: 1000-2000
+    #   Poor: >2000
+
+    GPSP = 9999
     GPSFIX = 0 # no lock.
     TSMP = 0
     DVNM = "Unknown"
@@ -132,6 +145,18 @@ def BuildGPSPoints(data, skip=False):
                 p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, datetime.fromtimestamp(SYST.miliseconds), gpsdata.speed)
                 points.append(p)
                 stats['ok'] += 1
+
+        elif d.fourCC == 'GPSP':
+            if GPSP != d.data:
+                # TODO: restructure to make it like the processing of GPSF
+                rating = "Poor"
+                if d.data < 100:    rating = "Ideal"
+                elif d.data < 200:  rating = "Excellent"
+                elif d.data < 500:  rating = "Good"
+                elif d.data < 1000: rating = "Moderate"
+                elif d.data < 2000: rating = "Fair"
+                print("GPSP change to %s [%s]" %(d.data, rating))
+            GPSP = d.data
 
 
 
