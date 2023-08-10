@@ -177,6 +177,22 @@ class LabelGPSP(LabelBase):
 	GPS Precision - Dilution of Precision (DOP x100), 1Hz
 	Within the GPS stream, under 500 is good
 	"""
+	limits = {
+		100: "Ideal",
+		200: "Excellent",
+		500: "Good",
+		1000: "Moderate",
+		2000: "Fair",
+		9999: "Poor"
+	}
+
+	def xlate(gpsp: int) -> str:
+		for l in LabelGPSP.limits.keys():
+			if gpsp <= l:
+				return LabelGPSP.limits[l]
+		return LabelGPSP.limits[9999]
+
+
 	def __init__(self):
 		LabelBase.__init__(self)
 
