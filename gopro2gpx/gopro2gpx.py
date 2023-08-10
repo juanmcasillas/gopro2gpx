@@ -27,7 +27,7 @@ from . import gpmf
 from . import gpshelper
 
 
-def BuildGPSPoints(data, skip=False):
+def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
     """
     Data comes UNSCALED so we have to do: Data / Scale.
     Do a finite state machine to process the labels.
@@ -49,7 +49,9 @@ def BuildGPSPoints(data, skip=False):
         'ok': 0,
         'badfix': 0,
         'badfixskip': 0,
-        'empty' : 0
+        'empty' : 0,
+        'baddop': 0,
+        'baddopskip': 0
     }
 
     # GPSP is 100x DoP 
@@ -106,6 +108,14 @@ def BuildGPSPoints(data, skip=False):
                         print("Warning: Skipping point due GPSFIX==0")
                         stats['badfixskip'] += 1
                         continue
+                
+                if GPSP > dopLimit:
+                    stats["baddop"] += 1
+                    if skipDop:
+                        print("Warning: skipping point due to GPSP>limit. GPSP: %s, limit: %s" %(GPSP, dopLimit))
+                        stats["baddopskip"] += 1
+                        continue
+                
 
                 retdata = [ float(x) / float(y) for x,y in zip( item._asdict().values() ,list(SCAL) ) ]
 
@@ -177,6 +187,8 @@ def parseArgs():
     parser.add_argument("-v", "--verbose", help="increase output verbosity", action="count")
     parser.add_argument("-b", "--binary", help="read data from bin file", action="store_true")
     parser.add_argument("-s", "--skip", help="Skip bad points (GPSFIX=0)", action="store_true", default=False)
+    parser.add_argument("--skip-dop", help="Skip high Dilution of Precision points (GPSP>X)", action="store_true", default=False)
+    parser.add_argument("--dop-limit", help="Dilution of Precision limit", default=2000)
     parser.add_argument("files", help="Video file or binary metadata dump", nargs='*')
     parser.add_argument("outputfile", help="output file. builds KML and GPX")
     args = parser.parse_args()
@@ -208,7 +220,7 @@ def main_core(args):
 
         data += gpmf.parseStream(raw_data, config.verbose)
 
-    points, start_time, device_name = BuildGPSPoints(data, skip=args.skip)
+    points, start_time, device_name = BuildGPSPoints(data, skip=args.skip, skipDop=args.skip_dop, dopLimit=args.dop_limit)
 
     if len(points) == 0:
         print("Can't create file. No GPS info in %s. Exitting" % args.files)
