@@ -65,7 +65,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
     #   Fair: 1000-2000
     #   Poor: >2000
 
-    GPSP = 9999
+    GPSP = None # no lock
     GPSFIX = 0 # no lock.
     TSMP = 0
     DVNM = "Unknown"
@@ -109,7 +109,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
                         stats['badfixskip'] += 1
                         continue
                 
-                if GPSP > dopLimit:
+                if GPSP is not None and GPSP > dopLimit:
                     stats["baddop"] += 1
                     if skipDop:
                         print("Warning: skipping point due to GPSP>limit. GPSP: %s, limit: %s" %(GPSP, dopLimit))
