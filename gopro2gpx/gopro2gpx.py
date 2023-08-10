@@ -158,14 +158,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
 
         elif d.fourCC == 'GPSP':
             if GPSP != d.data:
-                # TODO: restructure to make it like the processing of GPSF
-                rating = "Poor"
-                if d.data < 100:    rating = "Ideal"
-                elif d.data < 200:  rating = "Excellent"
-                elif d.data < 500:  rating = "Good"
-                elif d.data < 1000: rating = "Moderate"
-                elif d.data < 2000: rating = "Fair"
-                print("GPSP change to %s [%s]" %(d.data, rating))
+                print("GPSP change to %s [%s]" %(d.data, fourCC.LabelGPSP.xlate(d.data)))
             GPSP = d.data
 
 
@@ -177,6 +170,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
     print("Device: %s" % DVNM)
     print("- Ok:              %5d" % stats['ok'])
     print("- GPSFIX=0 (bad):  %5d (skipped: %d)" % (stats['badfix'], stats['badfixskip']))
+    print("- GPSP>%4d (bad): %5d (skipped: %d)" % (dopLimit, stats['baddop'], stats['baddopskip']))
     print("- Empty (No data): %5d" % stats['empty'])
     print("Total points:      %5d" % total_points)
     print("--------------------------")
