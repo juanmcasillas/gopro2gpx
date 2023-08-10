@@ -182,7 +182,7 @@ def parseArgs():
     parser.add_argument("-b", "--binary", help="read data from bin file", action="store_true")
     parser.add_argument("-s", "--skip", help="Skip bad points (GPSFIX=0)", action="store_true", default=False)
     parser.add_argument("--skip-dop", help="Skip high Dilution of Precision points (GPSP>X)", action="store_true", default=False)
-    parser.add_argument("--dop-limit", help="Dilution of Precision limit", default=2000)
+    parser.add_argument("--dop-limit", help="Dilution of Precision limit", default=2000, type=int)
     parser.add_argument("files", help="Video file or binary metadata dump", nargs='*')
     parser.add_argument("outputfile", help="output file. builds KML and GPX")
     args = parser.parse_args()
