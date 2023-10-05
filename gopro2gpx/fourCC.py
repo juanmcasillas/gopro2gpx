@@ -21,7 +21,8 @@ maptype = { 'c': 'c',
 			'l': 'l',
 			'B': 'B',
 			'f': 'f',
-			'J': 'Q'
+			'J': 'Q',
+            'F': 'c'	#32-bit four character key
 	}
 
   
@@ -38,6 +39,7 @@ KARMAUNIT10Data = collections.namedtuple("KARMAUNIT10Data","A  Ah J degC V1 V2 V
 KARMAUNIT15Data = collections.namedtuple("KARMAUNIT15Data","A  Ah J degC V1 V2 V3 V4 s p1 e1 e2 e3 e4 p2")
 GPSData = collections.namedtuple("GPSData","lat lon alt speed speed3d")
 KARMAGPSData = collections.namedtuple("KARMAGPSData", "tstamp lat lon alt speed speed3d unk1 unk2 unk3 unk4")
+HighlightsData = collections.namedtuple("HighlightsData", "time timein timeout lat lon alt type confidence score")
 SYSTData = collections.namedtuple("SYSTData", "seconds miliseconds")
 
 class LabelBase:
@@ -270,6 +272,37 @@ class LabelGPRI(LabelBase):
 			data = KARMAGPSData._make( data_tuple )
 		return(data)
 
+class LabelHLMT(LabelBase):
+
+	def __init__(self):
+		LabelBase.__init__(self)
+
+	def Build(self, klvdata):
+		"""
+		Highlights are stored in this way, using a complex type:
+		struct: Time (ms), in (ms), out (ms), Location XYZ (deg,deg,m), Type, Confidence (%) Score
+		SCAL: [1, 1, 1, 10000000, 10000000, 1, 1, 1, 1]
+
+		"""
+		hlmt_type = 'LLLllf4Fff'
+		s_hlmt_type = "".join([map_type(ord(x)) for x in hlmt_type])
+
+		# we need to check the REPEAT command. Length 36 (l) x repeat
+
+		if not klvdata.rawdata:
+			# empty point
+			data = [GPSData(0, 0, 0, 0, 0)]
+		else:
+			data = []
+			for r in range(klvdata.repeat):
+				s = struct.Struct(">" + s_hlmt_type)
+				temp_tuple = s.unpack_from(klvdata.rawdata[r*36:(r+1)*36])
+				# Remove the four separate bytes of the TYPE and concatenate
+				data_tuple = temp_tuple[:6] + ('MANL',) + temp_tuple[10:]
+				data_item = HighlightsData._make(data_tuple)
+				data.append(data_item)
+		return(data)
+
 class LabelSYST(LabelBase):
 	"""
 	UTC time and data from GPS, 1Hz n/a
@@ -345,6 +378,7 @@ labels = {
 		"ORIN" : Label_TypecString,
 		"ALLD" : LabelEmpty,
 		"ORIO" : Label_TypecString,
+        "VFOV" : LabelEmpty,   #  FOV Information
   
 		#gopro8 fix
         "GPSA" : LabelEmpty, ## Unknown GPS data        ## New for Hero8?
@@ -401,6 +435,48 @@ labels = {
 		"IORI": LabelEmpty,  # Image ORIentation
 		"GRAV": LabelEmpty,  # GRAvity Vector
 		"DISP": LabelEmpty,  # Disparity track (360 modes)
+        
+        # Highlights Fix
+		"HLMT":	LabelHLMT,
+		"RMRK": LabelEmpty,
+        "    ": LabelEmpty,
+        
+        # Header Fix
+		"VERS" : LabelEmpty,
+		"FMWR" : LabelEmpty,
+		"LINF" : LabelEmpty,
+		"CINF" : LabelEmpty,
+		"CASN" : LabelEmpty,
+		"MINF" : LabelEmpty,
+		"MUID" : LabelEmpty,
+		"CMOD" : LabelEmpty,
+		"MTYP" : LabelEmpty,
+		"OREN" : LabelEmpty,
+		"DZOM" : LabelEmpty,
+		"DZST" : LabelEmpty,
+		"SMTR" : LabelEmpty,
+		"PRTN" : LabelEmpty,
+		"PTWB" : LabelEmpty,
+		"PTSH" : LabelEmpty,
+		"PTCL" : LabelEmpty,
+		"EXPT" : LabelEmpty,
+		"PIMX" : LabelEmpty,
+		"PIMN" : LabelEmpty,
+		"PTEV" : LabelEmpty,
+		"RATE" : LabelEmpty,
+		"ZFOV" : LabelEmpty,
+		"VLTE" : LabelEmpty,
+		"VLTA" : LabelEmpty,
+		"EISA" : LabelEmpty,
+		"AUPT" : LabelEmpty,
+		"AUDO" : LabelEmpty,
+		"BROD" : LabelEmpty,
+		"PMOD" : LabelEmpty,
+		"PVUL" : LabelEmpty,
+		"PRJT" : LabelEmpty,
+		"SOFF" : LabelEmpty,
+		"EISE" : LabelEmpty,
+		"BRID" : LabelEmpty,
 
 		# gopro 11
 		"GPS9": LabelEmpty
@@ -411,6 +487,6 @@ def Manage(klvdata):
 		return labels[klvdata.fourCC]().Build(klvdata)
 	else:
 		issue_url = "https://github.com/juanmcasillas/gopro2gpx/issues/new"
-		print("Warning. fourCC Label '%s' not found. Please summit a issue to: %s" % (klvdata.fourCC,issue_url ))
+		print("Warning. fourCC Label -{0}- not found. Please summit a issue to: {1}".format(klvdata.fourCC,issue_url))
 		return False
 

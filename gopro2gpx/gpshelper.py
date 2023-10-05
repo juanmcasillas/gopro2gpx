@@ -48,7 +48,7 @@ def CSVTime(timedata):
     csvtime = csvtime[:-3]
     return csvtime
 
-def generate_GPX(points, start_time=None, trk_name="exercise"):
+def generate_GPX(points, start_time=None, trk_name="exercise", highlights=False):
 
     """
     Creates a GPX in 1.1 Format
@@ -91,6 +91,14 @@ def generate_GPX(points, start_time=None, trk_name="exercise"):
     xml += "<metadata>\r\n"
     xml += "  <time>%s</time>\r\n" % UTCTime(start_time)
     xml += "</metadata>\r\n"
+    
+    if highlights:
+        for num, wpt in enumerate(highlights):
+            way_pts = ' <wpt lat="%s" lon="%s">\r\n' % (wpt[2], wpt[1])
+            way_pts += '    <name>{0} ({1})</name>\r\n'.format('Hilight #{0}'.format(num), wpt[0])
+            way_pts += '</wpt>\r\n'
+            xml += way_pts
+    
     xml += "<trk>\r\n"
     xml += "  <name>%s</name>\r\n" % trk_name
     xml += "<trkseg>\r\n"

@@ -25,6 +25,7 @@ from .ffmpegtools import FFMpegTools
 from . import fourCC
 from . import gpmf
 from . import gpshelper
+from . import highlights
 
 
 def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
@@ -198,6 +199,23 @@ def main_core(args):
     ffmpegtools = FFMpegTools(ffprobe=config.ffprobe_cmd, ffmpeg=config.ffmpeg_cmd)
     data = []
     for num, filename in enumerate(files):
+        hilights = False
+        hilights = highlights.examine_mp4(filename)  # examine each file
+        if hilights:
+            str2insert = ""
+            str2insert += filename + "\n"
+            
+            for highlight in hilights:
+                str2insert += 'Time: {0} Lat,Lon {2},{1} Altitude {3}\n'.format(highlight[0], highlight[1], highlight[2], highlight[3])
+
+            # Create document
+            stripPath, _ = os.path.splitext(output_file)
+            outpFold, newFName = os.path.split(stripPath)
+            newPath = os.path.join(outpFold, newFName + '_Hilights' + '.txt')
+            with open(newPath, "w") as f:
+                f.write(str2insert)
+            print("Saved Highlights under: \"" + newPath + "\"")
+        
         reader = gpmf.GpmfFileReader(ffmpegtools, verbose=config.verbose)
 
         if not args.binary:
@@ -228,7 +246,7 @@ def main_core(args):
     #with open("%s.csv" % args.outputfile , "w+") as fd:
     #    fd.write(csv)
 
-    gpx = gpshelper.generate_GPX(points, start_time, trk_name=device_name)
+    gpx = gpshelper.generate_GPX(points, start_time, trk_name=device_name, highlights=hilights)
     with open("%s.gpx" % args.outputfile , "w+") as fd:
         fd.write(gpx)
 
