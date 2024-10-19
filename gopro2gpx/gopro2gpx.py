@@ -69,6 +69,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
     GPSFIX = 0 # no lock.
     TSMP = 0
     DVNM = "Unknown"
+
     for d in data:
         if d.fourCC == 'SCAL':
             SCAL = d.data
@@ -125,6 +126,41 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
                 points.append(p)
                 stats['ok'] += 1
                 sample_count += 1
+
+        elif d.fourCC == 'GPS9':
+            for item in d.data:
+                GPSFIX = item.fix
+                GPSP = item.dop
+
+                if item.lon == item.lat == item.alt == 0:
+                    print("Warning: Skipping empty point")
+                    stats['empty'] += 1
+                    continue
+
+                if GPSFIX == 0:
+                    stats['badfix'] += 1
+                    if skip:
+                        print("Warning: Skipping point due GPSFIX==0")
+                        stats['badfixskip'] += 1
+                        continue
+                if GPSP is not None and GPSP > dopLimit:
+                    stats["baddop"] += 1
+                    if skipDop:
+                        print("Warning: skipping point due to GPSP>limit. GPSP: %s, limit: %s" %(GPSP, dopLimit))
+                        stats["baddopskip"] += 1
+                        continue
+
+                retdata = [ float(x) / float(y) for x,y in zip( item._asdict().values() ,list(SCAL) ) ]
+
+                gpsdata = fourCC.GPS9Data._make(retdata)
+                target_date = datetime.datetime(2000, 1, 1) + datetime.timedelta(days=gpsdata.days_since_2000)
+                time_of_day = datetime.timedelta(seconds=gpsdata.secs_since_midnight)
+                gps_time = target_date + time_of_day
+                if start_time is None:
+                    start_time = gps_time
+                p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, gps_time, gpsdata.speed)
+                points.append(p)
+                stats['ok'] += 1
 
         elif d.fourCC == 'SYST':
             data = [ float(x) / float(y) for x,y in zip( d.data._asdict().values() ,list(SCAL) ) ]

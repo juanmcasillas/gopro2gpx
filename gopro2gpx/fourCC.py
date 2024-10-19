@@ -37,6 +37,7 @@ UNITData = collections.namedtuple("UNITData","lat lon alt speed speed3d")
 KARMAUNIT10Data = collections.namedtuple("KARMAUNIT10Data","A  Ah J degC V1 V2 V3 V4 s p1")
 KARMAUNIT15Data = collections.namedtuple("KARMAUNIT15Data","A  Ah J degC V1 V2 V3 V4 s p1 e1 e2 e3 e4 p2")
 GPSData = collections.namedtuple("GPSData","lat lon alt speed speed3d")
+GPS9Data = collections.namedtuple("GPS9Data", "lat lon alt speed speed3d days_since_2000 secs_since_midnight dop fix")
 KARMAGPSData = collections.namedtuple("KARMAGPSData", "tstamp lat lon alt speed speed3d unk1 unk2 unk3 unk4")
 SYSTData = collections.namedtuple("SYSTData", "seconds miliseconds")
 
@@ -243,6 +244,25 @@ class LabelGPS5(LabelBase):
 				data.append(data_item)
 		return(data)
 
+class LabelGPS9(LabelBase):
+	def __init__(self):
+		LabelBase.__init__(self)
+
+	def Build(self, klvdata):
+		if not klvdata.rawdata:
+			# empty point
+			data = [ GPS9Data(0,0,0,0,0,0,0,0,0) ]
+		else:
+			data = []
+			for r in range(klvdata.repeat):
+				gps9_type = 'lllllllSS'
+				stype = "".join( [map_type(ord(x)) for x in gps9_type ])
+
+				s = struct.Struct('>' + stype )
+				data_item = GPS9Data._make(s.unpack_from(klvdata.rawdata[r * (4 * 7 + 2 * 2):(r + 1) * (4 * 7 * 2 * 2)]))
+				data.append(data_item)
+		return(data)
+
 class LabelGPRI(LabelBase):
 	def __init__(self):
 		LabelBase.__init__(self)
@@ -403,7 +423,7 @@ labels = {
 		"DISP": LabelEmpty,  # Disparity track (360 modes)
 
 		# gopro 11
-		"GPS9": LabelEmpty
+		"GPS9": LabelGPS9
 }
 
 def Manage(klvdata):
