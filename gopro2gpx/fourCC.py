@@ -259,7 +259,7 @@ class LabelGPS9(LabelBase):
 				stype = "".join( [map_type(ord(x)) for x in gps9_type ])
 
 				s = struct.Struct('>' + stype )
-				data_item = GPS9Data._make(s.unpack_from(klvdata.rawdata[r * (4 * 7 + 2 * 2):(r + 1) * (4 * 7 * 2 * 2)]))
+				data_item = GPS9Data._make(s.unpack_from(klvdata.rawdata[r * (4 * 7 + 2 * 2):(r + 1) * (4 * 7 + 2 * 2)]))
 				data.append(data_item)
 		return(data)
 
