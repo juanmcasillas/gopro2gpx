@@ -51,7 +51,7 @@ class FFMpegTools:
         output = self.runCmdRaw(self.ffmpeg, ['-version'])
         version_info = output.decode('utf-8')
         
-        version_info_reg = re.compile('ffmpeg version ([a-zA-Z0-9\.-]+)', flags=re.I)
+        version_info_reg = re.compile(r'ffmpeg version ([a-zA-Z0-9\.-]+)', flags=re.I)
         m = version_info_reg.search(version_info)
         if m and len(m.groups()) == 1:
             #
@@ -72,7 +72,7 @@ class FFMpegTools:
             data = m.groups(1)[0]
             
 
-            values_reg = re.compile('(N-)?([a-zA-Z0-9]+)[\.-]([a-zA-Z0-9]+)[\.-]([a-zA-Z0-9]+)', flags=re.I)
+            values_reg = re.compile(r'(N-)?([a-zA-Z0-9]+)[\.-]([a-zA-Z0-9]+)[\.-]([a-zA-Z0-9]+)', flags=re.I)
             m = values_reg.search(data)
             if m:
                 #n_value = m.group(1)
@@ -202,7 +202,7 @@ class FFMpegTools:
         # Stream #0:3(eng): Data: bin_data (gpmd / 0x646D7067), 29 kb/s (default)
         # Stream #0:2(eng): Data: none (gpmd / 0x646D7067), 29 kb/s (default)
         # Stream #0:3[0x4](eng): Data: bin_data (gpmd
-        reg = re.compile('Stream #\d:(\d)(?:\[0x\d+\])?\(.+\): Data: \w+ \(gpmd', flags=re.I|re.M)
+        reg = re.compile(r'Stream #\d:(\d)(?:\[0x\d+\])?\(.+\): Data: \w+ \(gpmd', flags=re.I|re.M)
 
         m = reg.search(output)
 
