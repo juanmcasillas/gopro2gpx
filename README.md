@@ -210,12 +210,10 @@ We need the stream called in this clase, `#0:3(eng)` that is, the `0:3` stream:
 ```
 
 # Extracting the binary GPS data from MP4
-
-With this data, we can create a **binary file with the gpmd data inside**. The following command
-copy the stream `0:3` from the file `GH010039.MP4` as raw, and stores it in `GH010039.bin`
-
+With this data we can create a **binary file with the gpmd data inside**. The following command
+copies the stream `0:3` from `filename.mp4` as a raw stream and stores it in `filename.bin`
 ```sh
-%ffmpeg -y -i GH010039.MP4 -codec copy -map 0:3 -f rawvideo GH010039.bin
+ffmpeg -i filename.mp4 -map 0:3 -c copy -copy_unknown -f data filename.bin
 ```
 
 The binary looks like:
