@@ -1,5 +1,7 @@
 # Updates
 
+* Added support for Gopro13 (labels: `'CSCM', 'PRJT', 'LOGS', 'GPS '`).
+* Fixed the non-unicode fourCC labels with `ERRU` label (empty).
 * Added support for 18Hz resolution in `GPS5` fourCC, to fix (#PR23,#PR17)[https://github.com/juanmcasillas/gopro2gpx/pull/24]. Thanks to (JimmyS83)[https://github.com/JimmyS83] for spot the problem.
 * Fixed a new problem with the version strings, thanks to (hdnh2006)[https://github.com/hdnh2006].
 * Fixed a problem in stream['id'] using stream['index'] instead. Thanks to (hdnh2006)[https://github.com/hdnh2006] for spot the problem.
