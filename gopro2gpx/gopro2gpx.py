@@ -188,7 +188,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
 
             if SYST.seconds != 0 and SYST.miliseconds != 0:
                 print("XX", SYST.miliseconds)
-                p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, datetime.fromtimestamp(SYST.miliseconds), gpsdata.speed)
+                p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, datetime.datetime.fromtimestamp(SYST.miliseconds), gpsdata.speed)
                 points.append(p)
                 stats['ok'] += 1
 
@@ -250,14 +250,14 @@ def main_core(args):
 
         data += gpmf.parseStream(raw_data, config.verbose)
 
-    points, start_time, device_name = BuildGPSPoints(data, skip=args.skip, skipDop=args.skip_dop, dopLimit=args.dop_limit)
+    points, start_time, device_name = BuildGPSPoints(data, skip=args.skip, skipDop=args.skipDop, dopLimit=args.dopLimit)
 
     if len(points) == 0:
         print("Can't create file. No GPS info in %s. Exitting" % args.files)
         sys.exit(0)
 
     kml = gpshelper.generate_KML(points)
-    with open("%s.kml" % args.outputfile , "w+") as fd:
+    with open(f"{args.outputfile}.kml", "w") as fd:
         fd.write(kml)
 
     #csv = gpshelper.generate_CSV(points)
@@ -265,7 +265,7 @@ def main_core(args):
     #    fd.write(csv)
 
     gpx = gpshelper.generate_GPX(points, start_time, trk_name=device_name)
-    with open("%s.gpx" % args.outputfile , "w+") as fd:
+    with open("%s.gpx" % args.outputfile , "w") as fd:
         fd.write(gpx)
 
 def main():
