@@ -1,5 +1,6 @@
 # Updates
 
+* Added support for CSV export format. Now it's created along the gpx and kml formats.
 * Added support for Gopro13 (labels: `'CSCM', 'PRJT', 'LOGS', 'GPS '`).
 * Fixed the non-unicode fourCC labels with `ERRU` label (empty).
 * Added support for 18Hz resolution in `GPS5` fourCC, to fix (#PR23,#PR17)[https://github.com/juanmcasillas/gopro2gpx/pull/24]. Thanks to (JimmyS83)[https://github.com/JimmyS83] for spot the problem.
