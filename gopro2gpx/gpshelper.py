@@ -10,6 +10,9 @@
 from datetime import datetime
 import time
 import os
+import io
+import csv
+
 
 class GPSPoint:
     def __init__(self, latitude=0.0, longitude=0.0, elevation=0.0, time=datetime.fromtimestamp(time.time()), speed=0.0):
@@ -47,6 +50,41 @@ def CSVTime(timedata):
     csvtime = timedata.strftime("%Y/%m/%d %H:%M:%S.%f")
     csvtime = csvtime[:-3]
     return csvtime
+
+def generate_CSV(points, start_time=None, trk_name="exercise"):
+    output = io.StringIO()
+    writer = csv.writer(output, quoting=csv.QUOTE_ALL)
+
+    header = [
+        "latitude",
+        "longitude",
+        "elevation",
+        "time",
+        "hr",
+        "cadence",
+        "speed",
+        "distance",
+        "power",
+        "temperature"
+    ]
+
+    writer.writerow(header)
+
+    for p in points:
+        data =  [
+            p.latitude,
+            p.longitude,
+            p.elevation,
+            UTCTime(p.time),
+            p.hr,
+            p.cadence,
+            p.speed,
+            p.distance,
+            p.power,
+            p.temperature
+        ]
+        writer.writerow(data)
+    return output.getvalue()
 
 def generate_GPX(points, start_time=None, trk_name="exercise"):
 
@@ -186,7 +224,7 @@ def generate_KML(gps_points):
     return(kml)
 
 
-def generate_CSV(gps_points):
+def generate_CSV_DashWare(gps_points):
     csv_template = """DashWare GPX CSV File
 Time,Latitude,Longitude,Elevation,AirTemp,HeartRate,Cadence,Power,Roll,Pitch
 %s"""

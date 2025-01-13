@@ -260,13 +260,15 @@ def main_core(args):
     with open(f"{args.outputfile}.kml", "w") as fd:
         fd.write(kml)
 
-    #csv = gpshelper.generate_CSV(points)
-    #with open("%s.csv" % args.outputfile , "w+") as fd:
-    #    fd.write(csv)
-
     gpx = gpshelper.generate_GPX(points, start_time, trk_name=device_name)
     with open("%s.gpx" % args.outputfile , "w") as fd:
         fd.write(gpx)
+
+    csv = gpshelper.generate_CSV(points, start_time, trk_name=device_name)
+    with open("%s.csv" % args.outputfile , "w", newline='') as fd:
+        fd.write(csv)
+
+
 
 def main():
     args = parseArgs()
