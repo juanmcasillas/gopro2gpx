@@ -423,7 +423,17 @@ labels = {
 		"DISP": LabelEmpty,  # Disparity track (360 modes)
 
 		# gopro 11
-		"GPS9": LabelGPS9
+		"GPS9": LabelGPS9,
+		
+        # gopro 13
+		"CSCM": LabelEmpty,
+		"PRJT": LabelEmpty,
+		"LOGS": LabelEmpty,
+		"GPS ": LabelEmpty,
+		
+        # unicode error (b'\xd8R\x11\x05') on gopro13
+		"ERRU": LabelEmpty,
+		
 }
 
 def Manage(klvdata):

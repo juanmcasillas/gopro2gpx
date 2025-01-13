@@ -22,7 +22,12 @@ class KLVData:
 
         s  = struct.Struct(KLVData.binary_format) # unsigned bytes!
         self.fourCC, self.type, self.size, self.repeat = s.unpack_from(data, offset=offset)
-        self.fourCC = self.fourCC.decode()
+        
+        
+        try:
+            self.fourCC = self.fourCC.decode()
+        except UnicodeDecodeError as e:
+            self.fourCC = "ERRU"
 
         self.type = int(self.type)
         self.length = self.size * self.repeat
