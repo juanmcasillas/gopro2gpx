@@ -250,7 +250,7 @@ def main_core(args):
 
         data += gpmf.parseStream(raw_data, config.verbose)
 
-    points, start_time, device_name = BuildGPSPoints(data, skip=args.skip, skipDop=args.skipDop, dopLimit=args.dopLimit)
+    points, start_time, device_name = BuildGPSPoints(data, skip=args.skip, skipDop=args.skip_dop, dopLimit=args.dop_limit)
 
     if len(points) == 0:
         print("Can't create file. No GPS info in %s. Exitting" % args.files)
