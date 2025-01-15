@@ -67,10 +67,10 @@ My idea is process the file in python, extract the data, and build a file in a k
    pip install git+https://github.com/juanmcasillas/gopro2gpx
    ```
 
-   b) *Or* Download the repository, unpack it and instal with
+   b) *Or* Download the repository, unpack it and install with
 
    ```
-   python setup.py install
+   python -m pip install .
    ```
 
 2. Ensure you have **FFmpeg** and **FFprobe** installed in your system.

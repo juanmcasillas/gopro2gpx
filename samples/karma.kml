@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <kml xmlns="http://www.opengis.net/kml/2.2"> <Document>
     <name>Demo</name>
-    <description>Description Demo</description> 
+    <description>Description Demo</description>
     <Style id="yellowLineGreenPoly">
         <LineStyle>
             <color>FF1400BE</color>
@@ -18,8 +18,8 @@
         <LineString>
             <extrude>1</extrude>
             <tessellate>1</tessellate>
-            <altitudeMode>absoluto</altitudeMode>
-            <coordinates> 
+            <altitudeMode>absolute</altitudeMode>
+            <coordinates>
                 -117.3310731,33.125381,15.343
 -117.3310965,33.1254168,15.456
 -117.3311205,33.125453,15.596
@@ -32,7 +32,7 @@
 -117.3314013,33.125888,16.389
 -117.3314429,33.125952,16.214
             </coordinates>
-        </LineString> 
+        </LineString>
     </Placemark>
     </Document>
     </kml>
