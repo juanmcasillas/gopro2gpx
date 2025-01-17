@@ -219,8 +219,11 @@ def parseArgs():
     parser.add_argument("-s", "--skip", help="Skip bad points (GPSFIX=0)", action="store_true", default=False)
     parser.add_argument("--skip-dop", help="Skip high Dilution of Precision points (GPSP>X)", action="store_true", default=False)
     parser.add_argument("--dop-limit", help="Dilution of Precision limit", default=2000, type=int)
-    parser.add_argument("files", help="Video file or binary metadata dump", nargs='*')
-    parser.add_argument("outputfile", help="output file. builds KML and GPX")
+    parser.add_argument("--gpx", help="Generate only GPX output", action="store_true", default=False)
+    parser.add_argument("--kml", help="Generate only KML output", action="store_true", default=False)
+    parser.add_argument("--csv", help="Generate only CSV output", action="store_true", default=False)
+    parser.add_argument("files", help="Video file or binary metadata dump", nargs='+')
+    parser.add_argument("outputfile", help="output file prefix. Builds KML, GPX and CSV by default")
     args = parser.parse_args()
 
     return args
@@ -253,21 +256,27 @@ def main_core(args):
     points, start_time, device_name = BuildGPSPoints(data, skip=args.skip, skipDop=args.skip_dop, dopLimit=args.dop_limit)
 
     if len(points) == 0:
-        print("Can't create file. No GPS info in %s. Exitting" % args.files)
+        print("Can't create file. No GPS info in %s. Exiting" % args.files)
         sys.exit(0)
 
-    kml = gpshelper.generate_KML(points)
-    with open(f"{args.outputfile}.kml", "w") as fd:
-        fd.write(kml)
+    if (not args.gpx and not args.csv):
+        kml = gpshelper.generate_KML(points)
+        with open(f"{args.outputfile}.kml", "w") as fd:
+            fd.write(kml)
+        if (args.kml):
+            sys.exit()
 
-    gpx = gpshelper.generate_GPX(points, start_time, trk_name=device_name)
-    with open("%s.gpx" % args.outputfile , "w") as fd:
-        fd.write(gpx)
+    if (not args.kml and not args.csv):
+        gpx = gpshelper.generate_GPX(points, start_time, trk_name=device_name)
+        with open(f"{args.outputfile}.gpx", "w") as fd:
+            fd.write(gpx)
+        if (args.gpx):
+            sys.exit()
 
-    csv = gpshelper.generate_CSV(points, start_time, trk_name=device_name)
-    with open("%s.csv" % args.outputfile , "w", newline='') as fd:
-        fd.write(csv)
-
+    if (not args.kml and not args.gpx):
+        csv = gpshelper.generate_CSV(points, start_time, trk_name=device_name)
+        with open("%s.csv" % args.outputfile , "w", newline='') as fd:
+            fd.write(csv)
 
 
 def main():
