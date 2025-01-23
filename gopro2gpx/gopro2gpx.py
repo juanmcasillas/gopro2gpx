@@ -25,7 +25,7 @@ from .ffmpegtools import FFMpegTools
 from . import fourCC
 from . import gpmf
 from . import gpshelper
-
+from . import VERSION
 
 def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
     """
@@ -213,6 +213,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
     return(points, start_time, DVNM)
 
 def parseArgs():
+    version_text = f"gopro2gpx version {VERSION}"
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--verbose", help="increase output verbosity", action="count")
     parser.add_argument("-b", "--binary", help="read data from bin file", action="store_true")
@@ -222,6 +223,12 @@ def parseArgs():
     parser.add_argument("--gpx", help="Generate only GPX output", action="store_true", default=False)
     parser.add_argument("--kml", help="Generate only KML output", action="store_true", default=False)
     parser.add_argument("--csv", help="Generate only CSV output", action="store_true", default=False)
+    parser.add_argument(
+        "--version",
+        help="show the gopro2gpx version and exit",
+        action="version",
+        version=version_text,
+    )
     parser.add_argument("files", help="Video file or binary metadata dump", nargs='+')
     parser.add_argument("outputfile", help="output file prefix. Builds KML, GPX and CSV by default")
     args = parser.parse_args()
