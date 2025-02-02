@@ -15,7 +15,7 @@ import csv
 
 
 class GPSPoint:
-    def __init__(self, latitude=0.0, longitude=0.0, elevation=0.0, time=datetime.fromtimestamp(time.time()), speed=0.0):
+    def __init__(self, latitude=0.0, longitude=0.0, elevation=0.0, time=datetime.fromtimestamp(time.time()), speed=0.0,name=''):
         self.latitude = latitude
         self.longitude = longitude
         self.elevation = elevation
@@ -31,6 +31,7 @@ class GPSPoint:
         self.distance = 0
         self.left_pedal_smoothness = 0
         self.left_torque_effectiveness = 0
+        self.name = name
 
 
 def UTCTime(timedata):
@@ -61,6 +62,7 @@ def generate_CSV(points, start_time=None, trk_name="exercise"):
         "elevation",
         "time",
         "hr",
+        "name",
         "cadence",
         "speed",
         "distance",
@@ -77,6 +79,7 @@ def generate_CSV(points, start_time=None, trk_name="exercise"):
             p.elevation,
             UTCTime(p.time),
             p.hr,
+            p.name,
             p.cadence,
             p.speed,
             p.distance,
@@ -148,8 +151,10 @@ def generate_GPX(points, start_time=None, trk_name="exercise"):
         cadence = p.cad
         speed = p.speed
         distance = p.distance
+        fourcc_type = p.name
 
         pts  = '	<trkpt lat="%s" lon="%s">\r\n' % (p.latitude, p.longitude)
+        pts += '		<fourcc_type>%s</fourcc_type>\r\n' % fourcc_type
         pts += '		<ele>%s</ele>\r\n' % p.elevation
         pts += '		<time>%s</time>\r\n' % UTCTime(p.time)
         pts += '		<extensions>\r\n'
