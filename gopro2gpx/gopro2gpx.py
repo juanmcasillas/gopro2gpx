@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 #
 # 17/02/2019
@@ -26,6 +27,7 @@ from . import fourCC
 from . import gpmf
 from . import gpshelper
 from . import VERSION
+
 
 def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
     """
@@ -122,7 +124,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
 
 
                 gpsdata = fourCC.GPSData._make(retdata)
-                p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, GPSU + datetime.timedelta(seconds= sample_count * t_delta), gpsdata.speed)
+                p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, GPSU + datetime.timedelta(seconds= sample_count * t_delta), gpsdata.speed,'GPS5')
                 points.append(p)
                 stats['ok'] += 1
                 sample_count += 1
@@ -158,7 +160,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
                 gps_time = target_date + time_of_day
                 if start_time is None:
                     start_time = gps_time
-                p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, gps_time, gpsdata.speed)
+                p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, gps_time, gpsdata.speed,'GPS9')
                 points.append(p)
                 stats['ok'] += 1
 
