@@ -7,6 +7,7 @@
   <name>GoPro Karma v1.0</name>
 <trkseg>
 	<trkpt lat="33.125381" lon="-117.3310731">
+		<fourcc_type></fourcc_type>
 		<ele>15.343</ele>
 		<time>2017-04-17T21:27:58.000000Z</time>
 		<extensions>
@@ -20,6 +21,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1254168" lon="-117.3310965">
+		<fourcc_type></fourcc_type>
 		<ele>15.456</ele>
 		<time>2017-04-17T21:27:59.000000Z</time>
 		<extensions>
@@ -33,6 +35,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.125453" lon="-117.3311205">
+		<fourcc_type></fourcc_type>
 		<ele>15.596</ele>
 		<time>2017-04-17T21:28:00.000000Z</time>
 		<extensions>
@@ -46,6 +49,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1255079" lon="-117.3311563">
+		<fourcc_type></fourcc_type>
 		<ele>15.737</ele>
 		<time>2017-04-17T21:28:01.000000Z</time>
 		<extensions>
@@ -59,6 +63,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1255686" lon="-117.3311953">
+		<fourcc_type></fourcc_type>
 		<ele>16.001</ele>
 		<time>2017-04-17T21:28:02.000000Z</time>
 		<extensions>
@@ -72,6 +77,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1256317" lon="-117.3312357">
+		<fourcc_type></fourcc_type>
 		<ele>16.238</ele>
 		<time>2017-04-17T21:28:03.000000Z</time>
 		<extensions>
@@ -85,6 +91,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1256955" lon="-117.3312767">
+		<fourcc_type></fourcc_type>
 		<ele>16.402</ele>
 		<time>2017-04-17T21:28:04.000000Z</time>
 		<extensions>
@@ -98,6 +105,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1257598" lon="-117.3313183">
+		<fourcc_type></fourcc_type>
 		<ele>16.609</ele>
 		<time>2017-04-17T21:28:05.000000Z</time>
 		<extensions>
@@ -111,6 +119,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1258239" lon="-117.3313598">
+		<fourcc_type></fourcc_type>
 		<ele>16.553</ele>
 		<time>2017-04-17T21:28:06.000000Z</time>
 		<extensions>
@@ -124,6 +133,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.125888" lon="-117.3314013">
+		<fourcc_type></fourcc_type>
 		<ele>16.389</ele>
 		<time>2017-04-17T21:28:07.000000Z</time>
 		<extensions>
@@ -137,6 +147,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.125952" lon="-117.3314429">
+		<fourcc_type></fourcc_type>
 		<ele>16.214</ele>
 		<time>2017-04-17T21:28:08.000000Z</time>
 		<extensions>

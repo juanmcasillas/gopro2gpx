@@ -7,6 +7,7 @@
   <name>SENSORB6</name>
 <trkseg>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:39.829000Z</time>
 		<extensions>
@@ -20,6 +21,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:39.884556Z</time>
 		<extensions>
@@ -33,6 +35,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:39.940111Z</time>
 		<extensions>
@@ -46,6 +49,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:39.995667Z</time>
 		<extensions>
@@ -59,6 +63,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.051222Z</time>
 		<extensions>
@@ -72,6 +77,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.106778Z</time>
 		<extensions>
@@ -85,6 +91,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.162333Z</time>
 		<extensions>
@@ -98,6 +105,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.217889Z</time>
 		<extensions>
@@ -111,6 +119,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.273444Z</time>
 		<extensions>
@@ -124,6 +133,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.329000Z</time>
 		<extensions>
@@ -137,6 +147,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.384556Z</time>
 		<extensions>
@@ -150,6 +161,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.440111Z</time>
 		<extensions>
@@ -163,6 +175,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.495667Z</time>
 		<extensions>
@@ -176,6 +189,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.551222Z</time>
 		<extensions>
@@ -189,6 +203,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.606778Z</time>
 		<extensions>
@@ -202,6 +217,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.662333Z</time>
 		<extensions>
@@ -215,6 +231,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.717889Z</time>
 		<extensions>
@@ -228,6 +245,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.773444Z</time>
 		<extensions>
@@ -241,6 +259,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.819000Z</time>
 		<extensions>
@@ -254,6 +273,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.874556Z</time>
 		<extensions>
@@ -267,6 +287,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.930111Z</time>
 		<extensions>
@@ -280,6 +301,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:40.985667Z</time>
 		<extensions>
@@ -293,6 +315,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.041222Z</time>
 		<extensions>
@@ -306,6 +329,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.096778Z</time>
 		<extensions>
@@ -319,6 +343,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.152333Z</time>
 		<extensions>
@@ -332,6 +357,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.207889Z</time>
 		<extensions>
@@ -345,6 +371,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.263444Z</time>
 		<extensions>
@@ -358,6 +385,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.319000Z</time>
 		<extensions>
@@ -371,6 +399,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.374556Z</time>
 		<extensions>
@@ -384,6 +413,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.430111Z</time>
 		<extensions>
@@ -397,6 +427,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.485667Z</time>
 		<extensions>
@@ -410,6 +441,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.541222Z</time>
 		<extensions>
@@ -423,6 +455,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.596778Z</time>
 		<extensions>
@@ -436,6 +469,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.652333Z</time>
 		<extensions>
@@ -449,6 +483,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.707889Z</time>
 		<extensions>
@@ -462,6 +497,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.763444Z</time>
 		<extensions>
@@ -475,6 +511,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.819000Z</time>
 		<extensions>
@@ -488,6 +525,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.864000Z</time>
 		<extensions>
@@ -501,6 +539,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.919556Z</time>
 		<extensions>
@@ -514,6 +553,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:41.975111Z</time>
 		<extensions>
@@ -527,6 +567,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.030667Z</time>
 		<extensions>
@@ -540,6 +581,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.086222Z</time>
 		<extensions>
@@ -553,6 +595,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.141778Z</time>
 		<extensions>
@@ -566,6 +609,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.197333Z</time>
 		<extensions>
@@ -579,6 +623,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.252889Z</time>
 		<extensions>
@@ -592,6 +637,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.308444Z</time>
 		<extensions>
@@ -605,6 +651,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.364000Z</time>
 		<extensions>
@@ -618,6 +665,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.419556Z</time>
 		<extensions>
@@ -631,6 +679,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.475111Z</time>
 		<extensions>
@@ -644,6 +693,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.530667Z</time>
 		<extensions>
@@ -657,6 +707,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.586222Z</time>
 		<extensions>
@@ -670,6 +721,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.641778Z</time>
 		<extensions>
@@ -683,6 +735,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.697333Z</time>
 		<extensions>
@@ -696,6 +749,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.752889Z</time>
 		<extensions>
@@ -709,6 +763,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.799000Z</time>
 		<extensions>
@@ -722,6 +777,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.854556Z</time>
 		<extensions>
@@ -735,6 +791,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.910111Z</time>
 		<extensions>
@@ -748,6 +805,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:42.965667Z</time>
 		<extensions>
@@ -761,6 +819,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.021222Z</time>
 		<extensions>
@@ -774,6 +833,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.076778Z</time>
 		<extensions>
@@ -787,6 +847,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.132333Z</time>
 		<extensions>
@@ -800,6 +861,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.187889Z</time>
 		<extensions>
@@ -813,6 +875,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.243444Z</time>
 		<extensions>
@@ -826,6 +889,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.299000Z</time>
 		<extensions>
@@ -839,6 +903,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.354556Z</time>
 		<extensions>
@@ -852,6 +917,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.410111Z</time>
 		<extensions>
@@ -865,6 +931,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.465667Z</time>
 		<extensions>
@@ -878,6 +945,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.521222Z</time>
 		<extensions>
@@ -891,6 +959,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.576778Z</time>
 		<extensions>
@@ -904,6 +973,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.632333Z</time>
 		<extensions>
@@ -917,6 +987,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.687889Z</time>
 		<extensions>
@@ -930,6 +1001,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.743444Z</time>
 		<extensions>
@@ -943,6 +1015,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.799000Z</time>
 		<extensions>
@@ -956,6 +1029,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.844000Z</time>
 		<extensions>
@@ -969,6 +1043,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.899556Z</time>
 		<extensions>
@@ -982,6 +1057,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:43.955111Z</time>
 		<extensions>
@@ -995,6 +1071,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.010667Z</time>
 		<extensions>
@@ -1008,6 +1085,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.066222Z</time>
 		<extensions>
@@ -1021,6 +1099,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.121778Z</time>
 		<extensions>
@@ -1034,6 +1113,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.177333Z</time>
 		<extensions>
@@ -1047,6 +1127,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.232889Z</time>
 		<extensions>
@@ -1060,6 +1141,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.288444Z</time>
 		<extensions>
@@ -1073,6 +1155,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.344000Z</time>
 		<extensions>
@@ -1086,6 +1169,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.399556Z</time>
 		<extensions>
@@ -1099,6 +1183,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.455111Z</time>
 		<extensions>
@@ -1112,6 +1197,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.510667Z</time>
 		<extensions>
@@ -1125,6 +1211,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.566222Z</time>
 		<extensions>
@@ -1138,6 +1225,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.621778Z</time>
 		<extensions>
@@ -1151,6 +1239,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.677333Z</time>
 		<extensions>
@@ -1164,6 +1253,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.732889Z</time>
 		<extensions>
@@ -1177,6 +1267,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.788444Z</time>
 		<extensions>
@@ -1190,6 +1281,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.834000Z</time>
 		<extensions>
@@ -1203,6 +1295,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.889556Z</time>
 		<extensions>
@@ -1216,6 +1309,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:44.945111Z</time>
 		<extensions>
@@ -1229,6 +1323,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.000667Z</time>
 		<extensions>
@@ -1242,6 +1337,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.056222Z</time>
 		<extensions>
@@ -1255,6 +1351,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.111778Z</time>
 		<extensions>
@@ -1268,6 +1365,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.167333Z</time>
 		<extensions>
@@ -1281,6 +1379,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.222889Z</time>
 		<extensions>
@@ -1294,6 +1393,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.278444Z</time>
 		<extensions>
@@ -1307,6 +1407,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.334000Z</time>
 		<extensions>
@@ -1320,6 +1421,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.389556Z</time>
 		<extensions>
@@ -1333,6 +1435,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.445111Z</time>
 		<extensions>
@@ -1346,6 +1449,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.500667Z</time>
 		<extensions>
@@ -1359,6 +1463,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.556222Z</time>
 		<extensions>
@@ -1372,6 +1477,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.611778Z</time>
 		<extensions>
@@ -1385,6 +1491,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.667333Z</time>
 		<extensions>
@@ -1398,6 +1505,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.722889Z</time>
 		<extensions>
@@ -1411,6 +1519,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.778444Z</time>
 		<extensions>
@@ -1424,6 +1533,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.824000Z</time>
 		<extensions>
@@ -1437,6 +1547,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.879556Z</time>
 		<extensions>
@@ -1450,6 +1561,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.935111Z</time>
 		<extensions>
@@ -1463,6 +1575,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:45.990667Z</time>
 		<extensions>
@@ -1476,6 +1589,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.046222Z</time>
 		<extensions>
@@ -1489,6 +1603,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.101778Z</time>
 		<extensions>
@@ -1502,6 +1617,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.157333Z</time>
 		<extensions>
@@ -1515,6 +1631,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.212889Z</time>
 		<extensions>
@@ -1528,6 +1645,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.268444Z</time>
 		<extensions>
@@ -1541,6 +1659,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.324000Z</time>
 		<extensions>
@@ -1554,6 +1673,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.379556Z</time>
 		<extensions>
@@ -1567,6 +1687,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.435111Z</time>
 		<extensions>
@@ -1580,6 +1701,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.490667Z</time>
 		<extensions>
@@ -1593,6 +1715,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.546222Z</time>
 		<extensions>
@@ -1606,6 +1729,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.601778Z</time>
 		<extensions>
@@ -1619,6 +1743,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.657333Z</time>
 		<extensions>
@@ -1632,6 +1757,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.712889Z</time>
 		<extensions>
@@ -1645,6 +1771,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.768444Z</time>
 		<extensions>
@@ -1658,6 +1785,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.814000Z</time>
 		<extensions>
@@ -1671,6 +1799,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.869556Z</time>
 		<extensions>
@@ -1684,6 +1813,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.925111Z</time>
 		<extensions>
@@ -1697,6 +1827,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:46.980667Z</time>
 		<extensions>
@@ -1710,6 +1841,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.036222Z</time>
 		<extensions>
@@ -1723,6 +1855,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.091778Z</time>
 		<extensions>
@@ -1736,6 +1869,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.147333Z</time>
 		<extensions>
@@ -1749,6 +1883,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.202889Z</time>
 		<extensions>
@@ -1762,6 +1897,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.258444Z</time>
 		<extensions>
@@ -1775,6 +1911,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.314000Z</time>
 		<extensions>
@@ -1788,6 +1925,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.369556Z</time>
 		<extensions>
@@ -1801,6 +1939,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.425111Z</time>
 		<extensions>
@@ -1814,6 +1953,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.480667Z</time>
 		<extensions>
@@ -1827,6 +1967,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.536222Z</time>
 		<extensions>
@@ -1840,6 +1981,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.591778Z</time>
 		<extensions>
@@ -1853,6 +1995,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.647333Z</time>
 		<extensions>
@@ -1866,6 +2009,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.702889Z</time>
 		<extensions>
@@ -1879,6 +2023,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.804000Z</time>
 		<extensions>
@@ -1892,6 +2037,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.859556Z</time>
 		<extensions>
@@ -1905,6 +2051,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.915111Z</time>
 		<extensions>
@@ -1918,6 +2065,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:47.970667Z</time>
 		<extensions>
@@ -1931,6 +2079,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.026222Z</time>
 		<extensions>
@@ -1944,6 +2093,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.081778Z</time>
 		<extensions>
@@ -1957,6 +2107,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.137333Z</time>
 		<extensions>
@@ -1970,6 +2121,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.192889Z</time>
 		<extensions>
@@ -1983,6 +2135,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.248444Z</time>
 		<extensions>
@@ -1996,6 +2149,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.304000Z</time>
 		<extensions>
@@ -2009,6 +2163,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.359556Z</time>
 		<extensions>
@@ -2022,6 +2177,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.415111Z</time>
 		<extensions>
@@ -2035,6 +2191,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.470667Z</time>
 		<extensions>
@@ -2048,6 +2205,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.526222Z</time>
 		<extensions>
@@ -2061,6 +2219,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.581778Z</time>
 		<extensions>
@@ -2074,6 +2233,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.637333Z</time>
 		<extensions>
@@ -2087,6 +2247,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.692889Z</time>
 		<extensions>
@@ -2100,6 +2261,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.748444Z</time>
 		<extensions>
@@ -2113,6 +2275,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.794000Z</time>
 		<extensions>
@@ -2126,6 +2289,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.849556Z</time>
 		<extensions>
@@ -2139,6 +2303,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.905111Z</time>
 		<extensions>
@@ -2152,6 +2317,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:48.960667Z</time>
 		<extensions>
@@ -2165,6 +2331,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.016222Z</time>
 		<extensions>
@@ -2178,6 +2345,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.071778Z</time>
 		<extensions>
@@ -2191,6 +2359,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.127333Z</time>
 		<extensions>
@@ -2204,6 +2373,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.182889Z</time>
 		<extensions>
@@ -2217,6 +2387,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.238444Z</time>
 		<extensions>
@@ -2230,6 +2401,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.294000Z</time>
 		<extensions>
@@ -2243,6 +2415,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.349556Z</time>
 		<extensions>
@@ -2256,6 +2429,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.405111Z</time>
 		<extensions>
@@ -2269,6 +2443,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.460667Z</time>
 		<extensions>
@@ -2282,6 +2457,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.516222Z</time>
 		<extensions>
@@ -2295,6 +2471,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.571778Z</time>
 		<extensions>
@@ -2308,6 +2485,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.627333Z</time>
 		<extensions>
@@ -2321,6 +2499,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.682889Z</time>
 		<extensions>
@@ -2334,6 +2513,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.738444Z</time>
 		<extensions>
@@ -2347,6 +2527,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.794000Z</time>
 		<extensions>
@@ -2360,6 +2541,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.839000Z</time>
 		<extensions>
@@ -2373,6 +2555,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.894556Z</time>
 		<extensions>
@@ -2386,6 +2569,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:49.950111Z</time>
 		<extensions>
@@ -2399,6 +2583,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:50.005667Z</time>
 		<extensions>
@@ -2412,6 +2597,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:50.061222Z</time>
 		<extensions>
@@ -2425,6 +2611,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:50.116778Z</time>
 		<extensions>
@@ -2438,6 +2625,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:50.172333Z</time>
 		<extensions>
@@ -2451,6 +2639,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:50.227889Z</time>
 		<extensions>
@@ -2464,6 +2653,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:50.283444Z</time>
 		<extensions>
@@ -2477,6 +2667,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:50.339000Z</time>
 		<extensions>
@@ -2490,6 +2681,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:50.394556Z</time>
 		<extensions>
@@ -2503,6 +2695,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:50.450111Z</time>
 		<extensions>
@@ -2516,6 +2709,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:50.505667Z</time>
 		<extensions>
@@ -2529,6 +2723,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:50.561222Z</time>
 		<extensions>
@@ -2542,6 +2737,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:50.616778Z</time>
 		<extensions>
@@ -2555,6 +2751,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:50.672333Z</time>
 		<extensions>
@@ -2568,6 +2765,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:50.727889Z</time>
 		<extensions>
@@ -2581,6 +2779,7 @@
 		</extensions>
 	</trkpt>
 	<trkpt lat="33.1267334" lon="-117.3274448">
+		<fourcc_type>GPS5</fourcc_type>
 		<ele>-16.823</ele>
 		<time>2018-03-23T22:51:50.783444Z</time>
 		<extensions>
