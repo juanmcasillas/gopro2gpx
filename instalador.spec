@@ -64,7 +64,7 @@ excludes = [
 ]
 
 a = Analysis(
-    ['gopro2gpx_gui.py'],  # Script principal de entrada
+    ['gopro2gpx_gui_SPA.py'],  # Script principal de entrada
     pathex=[base_path],
     binaries=binaries,
     datas=datas,
@@ -103,6 +103,6 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon="C:/NUBE/ahmedcr_net/OneDrive/CURSAO/PY/APP PYTHON OK/gopro2gpx-master/icon.ico",  # Ruta con barras inclinadas para evitar problemas
+    icon="E:/MIS NUBES/OneDrive/CURSAO/PY/APP PYTHON OK/gopro2gpx/icon.ico",  # Ruta con barras inclinadas para evitar problemas
     win32manifest="app.manifest"
 )
