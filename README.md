@@ -7,6 +7,10 @@
 * Fixed a new problem with the version strings, thanks to (hdnh2006)[https://github.com/hdnh2006].
 * Fixed a problem in stream['id'] using stream['index'] instead. Thanks to (hdnh2006)[https://github.com/hdnh2006] for spot the problem.
 * Added support for "new" and "old" version strings for `ffmpeg`:
+* GUI interface created with the Tkinter library is included. Version in English and Spanish language
+* Added icon for Windows executable
+* File "instalador.spec" was added with instructions to create the executable for windows through pyinstaller.
+* File config.py, gopro2gpx.py, gpshelper.py was updated to ensure the functionality of the Windows executable
 
 ```python
 #
