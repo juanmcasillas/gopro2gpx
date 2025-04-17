@@ -52,7 +52,28 @@ def CSVTime(timedata):
     csvtime = csvtime[:-3]
     return csvtime
 
+def _prioritize_gps9(points):
+    """
+    Función auxiliar para priorizar puntos GPS9 sobre GPS5
+    Si hay puntos GPS9, filtra solo esos puntos
+    Si no hay puntos GPS9, devuelve todos los puntos (GPS5)
+    """
+    # Verificar si hay puntos GPS9
+    has_gps9 = any(p.name == "GPS9" for p in points)
+    
+    # Si hay puntos GPS9, filtrar solo esos puntos
+    if has_gps9:
+        filtered_points = [p for p in points if p.name == "GPS9"]
+        if filtered_points:  # Asegurarse de que hay puntos después del filtrado
+            return filtered_points
+    
+    # Si no hay puntos GPS9 o el filtrado no dejó puntos, devolver todos los puntos originales
+    return points
+
 def generate_CSV(points, start_time=None, trk_name="exercise"):
+    # Priorizar puntos GPS9 sobre GPS5
+    filtered_points = _prioritize_gps9(points)
+    
     output = io.StringIO()
     writer = csv.writer(output, quoting=csv.QUOTE_ALL)
 
@@ -72,7 +93,7 @@ def generate_CSV(points, start_time=None, trk_name="exercise"):
 
     writer.writerow(header)
 
-    for p in points:
+    for p in filtered_points:
         data =  [
             p.latitude,
             p.longitude,
@@ -90,13 +111,17 @@ def generate_CSV(points, start_time=None, trk_name="exercise"):
     return output.getvalue()
 
 def generate_GPX(points, start_time=None, trk_name="exercise"):
-
     """
     Creates a GPX in 1.1 Format
     """
+    # Priorizar puntos GPS9 sobre GPS5
+    filtered_points = _prioritize_gps9(points)
+    
+    if not filtered_points:
+        return ""
 
     if start_time is None:
-        start_time = points[0].time
+        start_time = filtered_points[0].time
 
     xml  = '<?xml version="1.0" encoding="UTF-8"?>\r\n'
     gpx_attr = [
@@ -146,7 +171,7 @@ def generate_GPX(points, start_time=None, trk_name="exercise"):
     #    <sat>7</sat>
     #  </trkpt>
 
-    for p in points:
+    for p in filtered_points:
         hr = p.hr
         cadence = p.cad
         speed = p.speed
@@ -182,11 +207,11 @@ def generate_GPX(points, start_time=None, trk_name="exercise"):
 
 def generate_KML(gps_points):
     """
-
     use this for color
     http://www.zonums.com/gmaps/kml_color/
-
     """
+    # Priorizar puntos GPS9 sobre GPS5
+    filtered_points = _prioritize_gps9(gps_points)
 
     kml_template = """<?xml version="1.0" encoding="UTF-8"?>
     <kml xmlns="http://www.opengis.net/kml/2.2"> <Document>
@@ -220,7 +245,7 @@ def generate_KML(gps_points):
 
 
     lines = []
-    for p in gps_points:
+    for p in filtered_points:
         s = "%s,%s,%s" % (p.longitude, p.latitude, p.elevation)
         lines.append(s)
 
@@ -230,13 +255,16 @@ def generate_KML(gps_points):
 
 
 def generate_CSV_DashWare(gps_points):
+    # Priorizar puntos GPS9 sobre GPS5
+    filtered_points = _prioritize_gps9(gps_points)
+    
     csv_template = """DashWare GPX CSV File
 Time,Latitude,Longitude,Elevation,AirTemp,HeartRate,Cadence,Power,Roll,Pitch
 %s"""
 
 
     lines = []
-    for p in gps_points:
+    for p in filtered_points:
         s = "%s,%s,%s,%s,%s" % (CSVTime(p.time), p.latitude, p.longitude, p.elevation, ',,,,,')
         lines.append(s)
 
