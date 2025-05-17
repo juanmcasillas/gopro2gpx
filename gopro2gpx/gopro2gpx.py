@@ -37,7 +37,7 @@ from . import gpmf
 from . import gpshelper
 from . import VERSION
 
-def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
+def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000, timeShift=0):
     """
     Procesa los datos extraídos y genera una lista de puntos GPS.
 
@@ -62,7 +62,6 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
     GPSFIX = 0
     TSMP = 0
     DVNM = "Unknown"
-    TIMEFIX = 0
 
     for d in data:
         # print("fourCC: {}".format(d.fourCC))
@@ -105,7 +104,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
                         continue
                 retdata = [ float(x) / float(y) for x,y in zip(item._asdict().values(), list(SCAL)) ]
                 gpsdata = fourCC.GPSData._make(retdata)
-                gpstime = GPSU + datetime.timedelta(seconds=sample_count*t_delta) - datetime.timedelta(seconds=TIMEFIX)
+                gpstime = GPSU + datetime.timedelta(seconds=sample_count*t_delta) + datetime.timedelta(seconds=timeShift)
                 p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, gpstime, gpsdata.speed, 'GPS5')
                 points.append(p)
                 stats['ok'] += 1
@@ -134,7 +133,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
                 gpsdata = fourCC.GPS9Data._make(retdata)
                 target_date = datetime.datetime(2000, 1, 1) + datetime.timedelta(days=gpsdata.days_since_2000)
                 time_of_day = datetime.timedelta(seconds=gpsdata.secs_since_midnight)
-                gps_time = (target_date + time_of_day) - datetime.timedelta(seconds=3600) - datetime.timedelta(seconds=TIMEFIX)
+                gps_time = (target_date + time_of_day) - datetime.timedelta(seconds=3600) - datetime.timedelta(seconds=timeShift)
                 if start_time is None:
                     start_time = gps_time
                 p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, gps_time, gpsdata.speed, 'GPS9')
@@ -158,7 +157,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
             data_vals = [ float(x) / float(y) for x,y in zip(d.data._asdict().values(), list(SCAL)) ]
             gpsdata = fourCC.KARMAGPSData._make(data_vals)
             if SYST.seconds != 0 and SYST.miliseconds != 0:
-                syst_time = datetime.datetime.fromtimestamp(SYST.miliseconds) - datetime.timedelta(seconds=TIMEFIX)
+                syst_time = datetime.datetime.fromtimestamp(SYST.miliseconds) - datetime.timedelta(seconds=timeShift)
                 p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, syst_time, gpsdata.speed)
                 points.append(p)
                 stats['ok'] += 1
@@ -176,9 +175,9 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000):
     print("- Empty (No data): %5d" % stats['empty'])
     print("Total points:      %5d" % total_points)
     print("--------------------------")
-    if TIMEFIX > 0:
-        print(f"Timestamp shifted: {TIMEFIX}s")
-        start_time = start_time - datetime.timedelta(seconds=TIMEFIX)
+    if timeShift > 0:
+        print(f"Timestamp shifted: {timeShift}s")
+        start_time = start_time - datetime.timedelta(seconds=timeShift)
     return (points, start_time, DVNM)
 
 
@@ -190,6 +189,7 @@ def parseArgs():
     parser.add_argument("-s", "--skip", help="Skip bad points (GPSFIX=0)", action="store_true", default=False)
     parser.add_argument("--skip-dop", help="Skip high Dilution of Precision points (GPSP>X)", action="store_true", default=False)
     parser.add_argument("--dop-limit", help="Dilution of Precision limit", default=2000, type=int)
+    parser.add_argument("--time-shift", help="Shift Timestamps by X seconds", default=0, type=int)
     parser.add_argument("--gpx", help="Generate only GPX output", action="store_true", default=False)
     parser.add_argument("--kml", help="Generate only KML output", action="store_true", default=False)
     parser.add_argument("--csv", help="Generate only CSV output", action="store_true", default=False)
@@ -227,7 +227,7 @@ def main_core(args):
                 f.write(raw_data)
         data += gpmf.parseStream(raw_data, config.verbose)
 
-    points, start_time, device_name = BuildGPSPoints(data, skip=args.skip, skipDop=args.skip_dop, dopLimit=args.dop_limit)
+    points, start_time, device_name = BuildGPSPoints(data, skip=args.skip, skipDop=args.skip_dop, dopLimit=args.dop_limit, timeShift=args.time_shift)
     if len(points) == 0:
         print("Can't create file. No GPS info in %s. Exiting" % args.files)
         if not args.gui:
