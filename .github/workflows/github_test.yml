@@ -1,0 +1,21 @@
+name: Test
+on: [push]
+jobs:
+  Test-Changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - name: Install ffmpeg
+        shell: bash -l {0}
+        run: sudo apt install ffmpeg
+      - name: Install libraries
+        shell: bash -l {0}
+        run: pip install pytest
+      - name: Install
+        shell: bash -l {0}
+        run: pip install .
+      - name: Pytest
+        shell: bash -l {0}
+        run: py.test
