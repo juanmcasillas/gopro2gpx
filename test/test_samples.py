@@ -18,6 +18,7 @@ class Args(object):
         self.gpx = False
         self.kml = False
         self.csv = False
+        self.time_shift = 0
 
 
 @pytest.mark.parametrize("sample_bin", ['fusion.bin',
