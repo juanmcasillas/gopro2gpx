@@ -2,14 +2,18 @@ name: Test
 on: [push]
 jobs:
   Test-Changes:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - name: Install ffmpeg
-        shell: bash -l {0}
-        run: sudo apt install ffmpeg
+      - uses: FedericoCarboni/setup-ffmpeg@v3
+        id: setup-ffmpeg
+        with:
+          ffmpeg-version: release
       - name: Install libraries
         shell: bash -l {0}
         run: pip install pytest
