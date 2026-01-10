@@ -206,9 +206,6 @@ def main_core(args):
         args.gui = False
 
     config = setup_environment(args)
-    # Ajuste de rutas para el entorno frozen
-    config.ffprobe_cmd = resource_path(config.ffprobe_cmd)
-    config.ffmpeg_cmd = resource_path(config.ffmpeg_cmd)
     
     files = args.files
     output_file = args.outputfile
