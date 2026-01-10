@@ -249,9 +249,9 @@ def generate_KML(gps_points):
         s = "%s,%s,%s" % (p.longitude, p.latitude, p.elevation)
         lines.append(s)
 
-    coords = os.linesep.join(lines)
+    coords = '\n'.join(lines)
     kml = kml_template % coords
-    return(kml)
+    return kml
 
 
 def generate_CSV_DashWare(gps_points):
