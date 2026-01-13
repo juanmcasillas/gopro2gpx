@@ -123,7 +123,7 @@ def generate_GPX(points, start_time=None, trk_name="exercise"):
     if start_time is None:
         start_time = filtered_points[0].time
 
-    xml  = '<?xml version="1.0" encoding="UTF-8"?>\r\n'
+    xml  = '<?xml version="1.0" encoding="UTF-8"?>\n'
     gpx_attr = [
                 'xmlns="http://www.topografix.com/GPX/1/1"' ,
                 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' ,
@@ -152,14 +152,14 @@ def generate_GPX(points, start_time=None, trk_name="exercise"):
   	# <gpxtpx:speed>1.0</gpxtpx:speed>
     # <gpxtpx:distance>0</gpxtpx:distance>
 
-    xml += "<gpx " + " ".join(gpx_attr) + ">\r\n"
+    xml += "<gpx " + " ".join(gpx_attr) + ">\n"
 
-    xml += "<metadata>\r\n"
-    xml += "  <time>%s</time>\r\n" % UTCTime(start_time)
-    xml += "</metadata>\r\n"
-    xml += "<trk>\r\n"
-    xml += "  <name>%s</name>\r\n" % trk_name
-    xml += "<trkseg>\r\n"
+    xml += "<metadata>\n"
+    xml += "  <time>%s</time>\n" % UTCTime(start_time)
+    xml += "</metadata>\n"
+    xml += "<trk>\n"
+    xml += "  <name>%s</name>\n" % trk_name
+    xml += "<trkseg>\n"
 
     #
     # add the points
@@ -178,28 +178,28 @@ def generate_GPX(points, start_time=None, trk_name="exercise"):
         distance = p.distance
         fourcc_type = p.name
 
-        pts  = '	<trkpt lat="%s" lon="%s">\r\n' % (p.latitude, p.longitude)
-        pts += '		<fourcc_type>%s</fourcc_type>\r\n' % fourcc_type
-        pts += '		<ele>%s</ele>\r\n' % p.elevation
-        pts += '		<time>%s</time>\r\n' % UTCTime(p.time)
-        pts += '		<extensions>\r\n'
-        pts += '		<gpxtpx:TrackPointExtension>\r\n'
-        pts += '		    <gpxtpx:hr>%s</gpxtpx:hr>\r\n' % hr
-        pts += '		    <gpxtpx:cad>%s</gpxtpx:cad>\r\n' % cadence
-        pts += '		    <gpxtpx:speed>%s</gpxtpx:speed>\r\n' % speed
-        pts += '		    <gpxtpx:distance>%s</gpxtpx:distance>\r\n' % distance
-        pts += '		   </gpxtpx:TrackPointExtension>\r\n'
-        pts += '		<gpxx:TrackPointExtension/>\r\n' ## new
-    	#pts += '        <power>%s</power>\r\n' % power
-    	#pts += '        <<gpxtpx:temp>%s</temp>\r\n'   % temperature
-        pts += '		</extensions>\r\n'
-        pts += '	</trkpt>\r\n'
+        pts  = '	<trkpt lat="%s" lon="%s">\n' % (p.latitude, p.longitude)
+        pts += '		<fourcc_type>%s</fourcc_type>\n' % fourcc_type
+        pts += '		<ele>%s</ele>\n' % p.elevation
+        pts += '		<time>%s</time>\n' % UTCTime(p.time)
+        pts += '		<extensions>\n'
+        pts += '		<gpxtpx:TrackPointExtension>\n'
+        pts += '		    <gpxtpx:hr>%s</gpxtpx:hr>\n' % hr
+        pts += '		    <gpxtpx:cad>%s</gpxtpx:cad>\n' % cadence
+        pts += '		    <gpxtpx:speed>%s</gpxtpx:speed>\n' % speed
+        pts += '		    <gpxtpx:distance>%s</gpxtpx:distance>\n' % distance
+        pts += '		   </gpxtpx:TrackPointExtension>\n'
+        pts += '		<gpxx:TrackPointExtension/>\n' ## new
+    	#pts += '        <power>%s</power>\n' % power
+    	#pts += '        <<gpxtpx:temp>%s</temp>\n'   % temperature
+        pts += '		</extensions>\n'
+        pts += '	</trkpt>\n'
 
         xml += pts
 
-    xml += "</trkseg>\r\n"
-    xml += "</trk>\r\n"
-    xml += "</gpx>\r\n"
+    xml += "</trkseg>\n"
+    xml += "</trk>\n"
+    xml += "</gpx>\n"
 
     return xml
 
@@ -249,9 +249,9 @@ def generate_KML(gps_points):
         s = "%s,%s,%s" % (p.longitude, p.latitude, p.elevation)
         lines.append(s)
 
-    coords = os.linesep.join(lines)
+    coords = '\n'.join(lines)
     kml = kml_template % coords
-    return(kml)
+    return kml
 
 
 def generate_CSV_DashWare(gps_points):

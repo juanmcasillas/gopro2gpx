@@ -17,8 +17,10 @@ def resource_path(relative_path):
     """
     Obtiene la ruta absoluta al recurso, ya sea en modo normal o frozen.
     """
-    base_path = getattr(sys, '_MEIPASS', os.path.abspath("."))
-    return os.path.join(base_path, relative_path)
+    if hasattr(sys, '_MEIPASS'):
+        base_path = getattr(sys, '_MEIPASS', os.path.abspath("."))
+        return os.path.join(base_path, relative_path)
+    return relative_path
 
 def main_core(args):
     # Ejemplo: utilizar resource_path para cargar el archivo de configuración
