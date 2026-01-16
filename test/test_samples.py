@@ -27,8 +27,8 @@ class Args(object):
                                         'hero06.bin',
                                         'hero07.bin',
                                         pytest.param('hero11.bin', marks=pytest.mark.xfail(reason='GPS9 change')),
-                                        pytest.param('hero13.bin', marks=pytest.mark.xfail(reason='tz bug in truth data')),
-                                        pytest.param('karma.bin', marks=pytest.mark.xfail(reason='tz bug in truth data'))])
+                                        'hero13.bin',
+                                        'karma.bin'])
 def test_sample_set(tmp_path: Path, sample_bin: str):
 
     samples_dir = dir_path + '../samples/'

@@ -131,7 +131,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000, timeShift=0):
                         continue
                 retdata = [ float(x) / float(y) for x,y in zip(item._asdict().values(), list(SCAL)) ]
                 gpsdata = fourCC.GPS9Data._make(retdata)
-                target_date = datetime.datetime(2000, 1, 1) + datetime.timedelta(days=gpsdata.days_since_2000)
+                target_date = datetime.datetime(2000, 1, 1, tzinfo=datetime.timezone.utc) + datetime.timedelta(days=gpsdata.days_since_2000)
                 time_of_day = datetime.timedelta(seconds=gpsdata.secs_since_midnight)
                 gps_time = (target_date + time_of_day) - datetime.timedelta(seconds=3600) - datetime.timedelta(seconds=timeShift)
                 if start_time is None:
@@ -157,7 +157,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000, timeShift=0):
             data_vals = [ float(x) / float(y) for x,y in zip(d.data._asdict().values(), list(SCAL)) ]
             gpsdata = fourCC.KARMAGPSData._make(data_vals)
             if SYST.seconds != 0 and SYST.miliseconds != 0:
-                syst_time = datetime.datetime.fromtimestamp(SYST.miliseconds) - datetime.timedelta(seconds=timeShift)
+                syst_time = datetime.datetime.fromtimestamp(SYST.miliseconds, tz=datetime.timezone.utc) - datetime.timedelta(seconds=timeShift)
                 p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, syst_time, gpsdata.speed)
                 points.append(p)
                 stats['ok'] += 1
