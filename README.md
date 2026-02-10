@@ -58,23 +58,16 @@ My idea is process the file in python, extract the data, and build a file in a k
 # Dependencies
 
 * [Python3](https://www.python.org/download/releases/3.0/)
+* [uv](https://docs.astral.sh/uv/)
 * [FFmpeg and FFprobe binaries](https://www.ffmpeg.org/download.html)
 * Valid MP4 with GPS data inside. Record something with your cam.
 
 # Installation
 
-1. Package installation: there are two ways to install the package:
+1. Create the environment and install the project:
 
-   a) Install via pip (with git installed):
-
-   ```
-   pip install git+https://github.com/juanmcasillas/gopro2gpx
-   ```
-
-   b) *Or* Download the repository, unpack it and install with
-
-   ```
-   python -m pip install .
+   ```sh
+   uv sync
    ```
 
 2. Ensure you have **FFmpeg** and **FFprobe** installed in your system.
@@ -97,35 +90,39 @@ My idea is process the file in python, extract the data, and build a file in a k
 4. The script can then be invoked with
 
    ```shell
-   gopro2gpx
+   uv run gopro2gpx
    ```
 
    or
 
    ```shell
-   python3 -m gopro2gpx
+   uv run python -m gopro2gpx
    ```
-
-   (exchange `python3` with your specific python installation)
 
    E.g. to run it on the example data (skip bad points, show the labels debug, create `hero6.kml` and `hero6.gpx` files):
 
    ```shell
-   gopro2gpx -s -vvv samples/hero6.mp4 hero6
+   uv run gopro2gpx -s -vvv samples/hero6.mp4 hero6
+   ```
+
+   Start the Qt GUI (auto language from system locale, or override with `--lang en|es`):
+
+   ```shell
+   uv run gopro2gpx-gui
    ```
 
 5. With custom path for FFMPEG
 
    ```
    export PATH=$PATH:/usr/local/opt/ffmpeg/bin
-   gopro2gpx -vvv samples/8/GH010159.MP4 output.bin
+   uv run gopro2gpx -vvv samples/8/GH010159.MP4 output.bin
    ```
 
 # Arguments and options
 
 ```
-% python gopro2gpx.py  --help
-usage: gopro2gpx.py [-h] [-v] [-b] [-s] file outputfile
+% uv run gopro2gpx --help
+usage: gopro2gpx [-h] [-v] [-b] [-s] file outputfile
 
 positional arguments:
   file           Video file or binary metadata dump
@@ -264,11 +261,10 @@ please extract the raw data and send me them (see [extracting data](#extracting-
 
 ## Test harnesses
 
-[Pytest](https://docs.pytest.org/) test harnesses exist in the `test` directory. With pytest installed, these can be run by using the following
-command in the top-level project directory:
+[Pytest](https://docs.pytest.org/) test harnesses exist in the `tests` directory. Install dev dependencies with `uv sync --group dev`, then run:
 
 ```sh
-pytest
+uv run pytest
 ```
 
 # Status and future work

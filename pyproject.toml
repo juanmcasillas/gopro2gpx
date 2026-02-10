@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling>=1.24.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gopro2gpx"
+version = "0.3"
+description = "Extract GoPro GPS metadata from MP4/GPMF and export GPX, KML, and CSV"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "GPL-3.0-or-later" }
+authors = [
+  { name = "Juan M. Casillas" },
+]
+dependencies = [
+  "PyQt6>=6.6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/juanmcasillas/gopro2gpx"
+
+[project.scripts]
+gopro2gpx = "gopro2gpx.gopro2gpx:main"
+gopro2gpx-gui = "gopro2gpx.gui.qt_app:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gopro2gpx"]
