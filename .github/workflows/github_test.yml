@@ -14,12 +14,11 @@ jobs:
         id: setup-ffmpeg
         with:
           ffmpeg-version: release
-      - name: Install libraries
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+      - name: Install project and dev dependencies
         shell: bash -l {0}
-        run: pip install pytest
-      - name: Install
-        shell: bash -l {0}
-        run: pip install .
+        run: uv sync --group dev
       - name: Pytest
         shell: bash -l {0}
-        run: py.test
+        run: uv run pytest
