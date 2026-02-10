@@ -23,7 +23,7 @@ def collect_tree(src, dest):
     return data_files
 
 # Incluir de forma recursiva todo el contenido del directorio del paquete "gopro2gpx"
-datas = collect_tree(os.path.join(base_path, "gopro2gpx"), "gopro2gpx")
+datas = collect_tree(os.path.join(base_path, "src", "gopro2gpx"), "gopro2gpx")
 
 # Incluir los ejecutables externos
 binaries = []
@@ -35,11 +35,14 @@ if os.path.exists(os.path.join(base_path, "ffprobe.exe")):
 # Recolectar importaciones ocultas
 hiddenimports = collect_submodules('gopro2gpx')
 hiddenimports.extend([
-    'tkinter',
-    'tkinter.filedialog',
-    'tkinter.messagebox',
-    'tkinter.scrolledtext',
-    'tkinter.ttk',
+    'gopro2gpx.gui',
+    'gopro2gpx.gui.qt_app',
+    'gopro2gpx.gui.i18n',
+    'PyQt6',
+    'PyQt6.QtCore',
+    'PyQt6.QtGui',
+    'PyQt6.QtWidgets',
+    'PyQt6.sip',
     'csv',
     're',
     'threading',
@@ -64,8 +67,8 @@ excludes = [
 ]
 
 a = Analysis(
-    ['gopro2gpx_gui_SPA.py'],  # Script principal de entrada
-    pathex=[base_path],
+    ['gopro2gpx_gui.py'],  # Script principal de entrada
+    pathex=[base_path, os.path.join(base_path, "src")],
     binaries=binaries,
     datas=datas,
     hiddenimports=hiddenimports,

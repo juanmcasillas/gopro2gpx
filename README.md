@@ -105,6 +105,12 @@ My idea is process the file in python, extract the data, and build a file in a k
    uv run gopro2gpx -s -vvv samples/hero6.mp4 hero6
    ```
 
+   Start the Qt GUI (auto language from system locale, or override with `--lang en|es`):
+
+   ```shell
+   uv run gopro2gpx-gui
+   ```
+
 5. With custom path for FFMPEG
 
    ```
@@ -255,7 +261,7 @@ please extract the raw data and send me them (see [extracting data](#extracting-
 
 ## Test harnesses
 
-[Pytest](https://docs.pytest.org/) test harnesses exist in the `test` directory. Install dev dependencies with `uv sync --group dev`, then run:
+[Pytest](https://docs.pytest.org/) test harnesses exist in the `tests` directory. Install dev dependencies with `uv sync --group dev`, then run:
 
 ```sh
 uv run pytest
