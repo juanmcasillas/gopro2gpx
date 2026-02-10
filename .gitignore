@@ -25,3 +25,4 @@ samples/*.mp4
 test/parse.py
 ffmpeg.exe
 ffprobe.exe
+keks.00.bin
