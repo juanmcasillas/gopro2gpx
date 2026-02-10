@@ -31,6 +31,8 @@ _TEXTS = {
         "no_videos": "No video files were found in the selected directory.",
         "completed_title": "Process Completed",
         "completed_msg": "File processing has successfully finished.",
+        "completed_with_failures_title": "Process Completed With Issues",
+        "completed_with_failures_msg": "Some files did not produce output. Check verbose output for details.",
         "select_video": "Select Video Directory",
         "select_output": "Select Output Directory",
         "about_html": """
@@ -76,6 +78,8 @@ creates GPX, CSV, or KML files.
         "no_videos": "No se han encontrado archivos de video en el directorio seleccionado.",
         "completed_title": "Proceso completado",
         "completed_msg": "El procesamiento de archivos ha finalizado exitosamente.",
+        "completed_with_failures_title": "Proceso completado con incidencias",
+        "completed_with_failures_msg": "Algunos archivos no generaron salida. Revisa la salida verbose para detalles.",
         "select_video": "Seleccionar directorio de videos",
         "select_output": "Seleccionar directorio de salida",
         "about_html": """

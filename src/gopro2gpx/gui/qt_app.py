@@ -49,6 +49,7 @@ class ProcessingWorker(QObject):
     progress = pyqtSignal(int, int)
     error = pyqtSignal(str)
     done = pyqtSignal()
+    missing_output = pyqtSignal(str)
 
     def __init__(self, jobs: list[argparse.Namespace], verbose_enabled: bool):
         super().__init__()
@@ -69,6 +70,8 @@ class ProcessingWorker(QObject):
             for index, job in enumerate(self.jobs, start=1):
                 try:
                     main_core(job)
+                    if not self._output_exists(job):
+                        self.missing_output.emit(job.outputfile)
                 except SystemExit:
                     pass
                 except Exception as exc:
@@ -80,6 +83,23 @@ class ProcessingWorker(QObject):
             sys.stdout = old_stdout
             sys.stderr = old_stderr
             self.done.emit()
+
+    @staticmethod
+    def _output_exists(job: argparse.Namespace) -> bool:
+        expected = []
+        if getattr(job, "kml", False):
+            expected.append(f"{job.outputfile}.kml")
+        if getattr(job, "gpx", False):
+            expected.append(f"{job.outputfile}.gpx")
+        if getattr(job, "csv", False):
+            expected.append(f"{job.outputfile}.csv")
+        if not expected:
+            expected = [
+                f"{job.outputfile}.kml",
+                f"{job.outputfile}.gpx",
+                f"{job.outputfile}.csv",
+            ]
+        return all(os.path.exists(path) for path in expected)
 
 
 class GoPro2GPXMainWindow(QMainWindow):
@@ -102,6 +122,7 @@ class GoPro2GPXMainWindow(QMainWindow):
 
         self._thread: QThread | None = None
         self._worker: ProcessingWorker | None = None
+        self._missing_outputs = 0
 
         self._build_ui()
 
@@ -262,10 +283,11 @@ class GoPro2GPXMainWindow(QMainWindow):
             QMessageBox.critical(self, self.t["error"], self.t["missing_output"])
             return
 
+        extensions = (".bin",) if self.binary_checkbox.isChecked() else (".mp4", ".mov", ".avi")
         video_files = [
             os.path.join(input_dir, name)
             for name in sorted(os.listdir(input_dir))
-            if name.lower().endswith((".mp4", ".mov", ".avi"))
+            if name.lower().endswith(extensions)
         ]
         if not video_files:
             QMessageBox.critical(self, self.t["error"], self.t["no_videos"])
@@ -296,6 +318,7 @@ class GoPro2GPXMainWindow(QMainWindow):
         self.progress.setValue(0)
         self.verbose_output.clear()
         self.process_button.setEnabled(False)
+        self._missing_outputs = 0
 
         self._thread = QThread(self)
         self._worker = ProcessingWorker(jobs, self.verbose_checkbox.isChecked())
@@ -305,6 +328,7 @@ class GoPro2GPXMainWindow(QMainWindow):
         self._worker.log.connect(self._append_log)
         self._worker.progress.connect(self._on_progress)
         self._worker.error.connect(self._on_error)
+        self._worker.missing_output.connect(self._on_missing_output)
         self._worker.done.connect(self._on_done)
         self._worker.done.connect(self._thread.quit)
         self._worker.done.connect(self._worker.deleteLater)
@@ -322,9 +346,20 @@ class GoPro2GPXMainWindow(QMainWindow):
     def _on_error(self, message: str) -> None:
         QMessageBox.critical(self, self.t["error"], message)
 
+    def _on_missing_output(self, output_prefix: str) -> None:
+        self._missing_outputs += 1
+        self._append_log(f"No output files were generated for: {output_prefix}\n")
+
     def _on_done(self) -> None:
         self.process_button.setEnabled(True)
-        QMessageBox.information(self, self.t["completed_title"], self.t["completed_msg"])
+        if self._missing_outputs:
+            QMessageBox.warning(
+                self,
+                self.t["completed_with_failures_title"],
+                self.t["completed_with_failures_msg"],
+            )
+        else:
+            QMessageBox.information(self, self.t["completed_title"], self.t["completed_msg"])
 
 
 def run_app(language: str | None = None) -> int:
