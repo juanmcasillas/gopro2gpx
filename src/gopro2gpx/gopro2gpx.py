@@ -133,7 +133,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000, timeShift=0):
                 gpsdata = fourCC.GPS9Data._make(retdata)
                 target_date = datetime.datetime(2000, 1, 1, tzinfo=datetime.timezone.utc) + datetime.timedelta(days=gpsdata.days_since_2000)
                 time_of_day = datetime.timedelta(seconds=gpsdata.secs_since_midnight)
-                gps_time = (target_date + time_of_day) - datetime.timedelta(seconds=3600) - datetime.timedelta(seconds=timeShift)
+                gps_time = (target_date + time_of_day) - datetime.timedelta(seconds=timeShift)
                 if start_time is None:
                     start_time = gps_time
                 p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, gps_time, gpsdata.speed, 'GPS9')
