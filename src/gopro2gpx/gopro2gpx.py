@@ -20,6 +20,7 @@ import sys
 import time
 from collections import namedtuple
 import datetime
+from statistics import median
 
 # Función para obtener la ruta correcta en modo normal o frozen (PyInstaller onefile)
 def resource_path(relative_path):
@@ -62,6 +63,19 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000, timeShift=0):
     GPSFIX = 0
     TSMP = 0
     DVNM = "Unknown"
+    gps5_rates = []
+    gpsu = None
+    gps5_samples = None
+    for d in data:
+        if d.fourCC == 'GPSU':
+            if gpsu is not None and gps5_samples is not None and d.data > gpsu:
+                gps5_rates.append(gps5_samples / (d.data - gpsu).total_seconds())
+            gpsu = d.data
+            gps5_samples = None
+        elif d.fourCC == 'GPS5':
+            gps5_samples = len(d.data)
+    frequency = max(1, round(median(gps5_rates))) if gps5_rates else 18
+    t_delta = 1 / frequency
 
     for d in data:
         # print("fourCC: {}".format(d.fourCC))
@@ -83,9 +97,7 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000, timeShift=0):
             else:
                 TSMP = d.data - TSMP
         elif d.fourCC == 'GPS5':
-            t_delta = 1/18.0
-            sample_count = 0
-            for item in d.data:
+            for sample_count, item in enumerate(d.data):
                 if item.lon == item.lat == item.alt == 0:
                     print("Warning: Skipping empty point")
                     stats['empty'] += 1
@@ -108,7 +120,6 @@ def BuildGPSPoints(data, skip=False, skipDop=False, dopLimit=2000, timeShift=0):
                 p = gpshelper.GPSPoint(gpsdata.lat, gpsdata.lon, gpsdata.alt, gpstime, gpsdata.speed, 'GPS5')
                 points.append(p)
                 stats['ok'] += 1
-                sample_count += 1
         elif d.fourCC == 'GPS9':
             for item in d.data:
                 GPSFIX = item.fix
